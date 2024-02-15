@@ -1,0 +1,49 @@
+<div class="login-container">
+
+    <div class="login-container-central">
+        <div class="login-container-header">
+            <div class="login-title">
+                Bem-vindo(a) ao Coinnecta
+            </div>
+            <div class="login-info">
+                Coinnecta é a fintech que conecta você e suas finanças. Entre e aproveite!
+            </div>
+            <div class="card-container">
+                <div class="card">Simples</div>
+                <div class="card">Seguro</div>
+                <div class="card">Acessível</div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form class="form-inputs" [formGroup]="loginForm" (submit)="loginUser()">
+
+                <div class="group-input">
+                    <div class="text-info">Email</div>
+                    <input type="email" placeholder="Digite seu e-mail" class="input-form" formControlName="email"
+                        required="">
+                    <label *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched"
+                        class="error-input">Campo obrigatório</label>
+                </div>
+
+                <div class="group-input">
+                    <div class="text-info">Senha</div>
+                    <input type="password" placeholder="Digite sua senha" class="input-form" formControlName="senha"
+                        required="">
+                    <label *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched"
+                        class="error-input">Campo
+                        obrigatório</label>
+                </div>
+                <div class="group-input">
+                    <button type="submit" class="login-button" [ngClass]="{'disabled' : !loginForm.valid}"
+                        [disabled]="!loginForm.valid">Login</button>
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="criarconta-button">Abrir Conta</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
