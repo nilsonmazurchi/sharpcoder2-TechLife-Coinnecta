@@ -1,0 +1,10 @@
+{
+    "usuario":[
+        {
+            "id": 1,
+            "nomeCompleto": "Silvano Silvano",
+            "CPF": "187.568.758-89",
+            "email": "silvano@email.com"
+        }
+    ]
+}
