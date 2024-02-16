@@ -3,15 +3,24 @@
     <div class="login-container-central">
         <div class="login-container-header">
             <div class="login-title">
-                Bem-vindo(a) ao Coinnecta
+                Bem-vindo(a) ao Coinnecta!
             </div>
             <div class="login-info">
                 Coinnecta é a fintech que conecta você e suas finanças. Entre e aproveite!
             </div>
             <div class="card-container">
-                <div class="card">Simples</div>
-                <div class="card">Seguro</div>
-                <div class="card">Acessível</div>
+                <div class="card">
+                    <img src="/assets/image/foguete.png" class="card-image" alt="logo">
+                    <div class="card-text">Simples</div>
+                </div>
+                <div class="card">
+                    <img src="/assets/image/escudo.png" class="card-image" alt="logo">
+                    <div class="card-text">Seguro</div>
+                </div>
+                <div class="card">
+                    <img src="/assets/image/moedas.png" class="card-image" alt="logo">
+                    <div class="card-text">Acessível</div>
+                </div>
             </div>
         </div>
 
@@ -31,15 +40,16 @@
                     <input type="password" placeholder="Digite sua senha" class="input-form" formControlName="senha"
                         required="">
                     <label *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched"
-                        class="error-input">Campo
-                        obrigatório</label>
+                        class="error-input">Campo obrigatório</label>
                 </div>
                 <div class="group-input">
                     <button type="submit" class="login-button" [ngClass]="{'disabled' : !loginForm.valid}"
                         [disabled]="!loginForm.valid">Login</button>
                 </div>
-                <br>
-                <br>
+                <br><br>
+                <div>
+                    Ainda não possui uma conta? Cadastre-se abaixo.
+                </div>
                 <button type="submit" class="criarconta-button">Abrir Conta</button>
             </form>
         </div>
