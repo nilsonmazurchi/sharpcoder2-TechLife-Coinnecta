@@ -1,3 +1,5 @@
+
+
 /* Estilo para o container principal */
 .login-container {
     display: flex;
@@ -8,13 +10,24 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+.login-container-central {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+    width: 200px;
+    margin-bottom: 20px;
 }
     
 /* Estilo para o título */
 .login-title {
     font-style: normal;
     font-weight: 700;
-    font-size: 48px;
+    font-size: 35px;
     text-align: center;
     color:  #007bff; /* Azul */
     margin-bottom: 20px;
@@ -78,7 +91,7 @@
   .text-info {
     font-weight: bold;
     font-size: 16px;
-    color: #333; /* Cinza escuro */
+    color: #333 !important; /* Cinza escuro */
 }
 
 
@@ -93,7 +106,7 @@
    }
 
     .error-input {
-        font-size: 14px;
+        font-size: 10px;
         color: red;
     }
 }
