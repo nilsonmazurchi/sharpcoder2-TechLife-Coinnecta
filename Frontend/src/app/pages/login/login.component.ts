@@ -28,6 +28,9 @@ export class LoginComponent {
   get dadosForm() { return this.loginForm.controls; }
 
   loginUser() {
-    alert("OK!");
+    if(this.loginForm.value.email === "admin@coinnecta.com" 
+    && this.loginForm.value.senha === "admin"){
+      this.router.navigate(['/home']);
+    }else alert('Usuário ou senha inválidos');
   }
 }
