@@ -3,7 +3,7 @@
     <!-- Container central -->
     <div class="login-container-central">
         <!-- Cabeçalho -->
-        <img src="/assets/image/logo-sem_fundo.png" class="logo" alt="logo-sem_fundo">
+        <img src="/assets/image/logo-sem_fundo.png" class="logo" alt="logo-sem_fundo" (click)="redirectHome()">
         <div class="login-container-header">
             <div class="login-title">
                 Bem-vindo(a) ao COINNECTA!
@@ -39,7 +39,8 @@
                     <input type="email" placeholder="Digite seu e-mail" class="input-form" formControlName="email"
                         required="">
                     <label
-                        *ngIf="(loginForm.get('email')?.errors?.['required'] || loginForm.get('email')?.errors?.['email']) && loginForm.get('email')?.touched" class="error-input">Campo obrigatório</label>
+                        *ngIf="(loginForm.get('email')?.errors?.['required'] || loginForm.get('email')?.errors?.['email']) && loginForm.get('email')?.touched"
+                        class="error-input">Campo obrigatório</label>
                 </div>
 
                 <!-- Campo de Senha -->
@@ -47,8 +48,7 @@
                     <div class="text-info">Senha</div>
                     <input type="password" placeholder="Digite sua senha" class="input-form" formControlName="senha"
                         required="">
-                    <label
-                        *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched"
+                    <label *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched"
                         class="error-input">Campo obrigatório</label>
                 </div>
 
@@ -59,14 +59,13 @@
                 </div>
 
                 <br><br>
-
                 <!-- Link para cadastro -->
                 <div class="text-criar-conta">
-                    Ainda não possui uma conta? Cadastre-se abaixo.
+                    Ainda não possui uma conta? Crie uma agora mesmo!
                 </div>
 
                 <!-- Botão para criar conta -->
-                <button type="submit" class="criarconta-button">Abrir Conta</button>
+                <button class="criarconta-button" (click)="goToRegister()">Abrir Conta</button>
             </form>
         </div>
 
