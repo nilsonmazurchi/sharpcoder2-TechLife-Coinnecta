@@ -27,11 +27,19 @@ export class LoginComponent {
   get dadosForm() { return this.loginForm.controls; }
 
   loginUser() {
-    if(this.loginForm.value.email === "admin@coinnecta.com" 
-    && this.loginForm.value.senha === "admin"){
+    if (this.loginForm.value.email === "admin@coinnecta.com"
+      && this.loginForm.value.senha === "admin") {
       this.router.navigate(['/home']);
-    }else alert('Usuário ou senha inválidos');
+      alert('Login realizado com sucesso!');
+    } else alert('Usuário ou senha inválidos');
   }
 
- 
+  goToRegister() {
+    this.router.navigate(['/cadastro']);
+  }
+
+  redirectHome() {
+    this.router.navigateByUrl('/home');
+  }
+
 }
