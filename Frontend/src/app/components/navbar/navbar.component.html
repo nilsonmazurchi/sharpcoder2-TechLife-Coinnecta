@@ -1,28 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand text-warning" href="#">
-    <img src="assets/image/Logo.ico" alt="logo"> Coinnecta
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="container">
+    <a class="navbar-brand text-warning" href="#">
+      <img src="assets/image/logo-sem_fundo.png" alt="logo">
+    </a>
+    <button class="navbar-toggler collapsed navbar-light bg-gradient me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary text-white" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary text-white" routerLink="/sobre">Sobre</a>
+        </li>
+      </ul>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mx-auto">
-      <li class="nav-item">
-        <a class="nav-link btn btn-primary text-white" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-primary text-white" routerLink="/sobre">Sobre</a>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link btn btn-primary text-white" routerLink="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-warning text-white" routerLink="/cadastrar">Cadastrar</a>
-      </li>
-    </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary text-white" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-warning text-white" routerLink="/cadastro">Cadastrar</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
