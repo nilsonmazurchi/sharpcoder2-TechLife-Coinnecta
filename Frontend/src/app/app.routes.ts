@@ -10,7 +10,6 @@ export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cadastro', component: CadastroComponent }
-  { path: 'sobre', component: SobreComponent },
-
+  { path: 'cadastro', component: CadastroComponent },
+  { path: 'sobre', component: SobreComponent }
 ]
