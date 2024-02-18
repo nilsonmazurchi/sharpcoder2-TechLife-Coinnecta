@@ -1,0 +1,70 @@
+/* Estilo para o formulário de cadastro */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.text-info{
+    color: #E2DD74 !important;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
+.register-container-central {
+    max-width: 600px;
+    width: 80%;
+    padding: 20px;
+    background-color: #012B3F;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.register-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #E2DD74;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.group-input {
+    margin-bottom: 15px;
+}
+
+.group-input .text-info {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.group-input .input-form {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error-input {
+    color: red;
+    font-size: 14px;
+}
+
+.register-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
