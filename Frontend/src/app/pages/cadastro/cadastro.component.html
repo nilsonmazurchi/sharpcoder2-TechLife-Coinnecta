@@ -1,0 +1,126 @@
+<div class="register-container">
+
+    <!-- Container central -->
+    <div class="register-container-central">
+        <!-- Cabeçalho -->
+        <img src="/assets/image/logo-sem_fundo.png" class="logo" alt="logo-sem_fundo">
+        <div class="register-container-header">
+            <div class="register-title">
+                Cadastro de Cliente
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <div class="form-container">
+                <form class="form-inputs" [formGroup]="registerForm" (submit)="registerUser()">
+
+                    <!-- Campo de Nome -->
+                    <div class="group-input">
+                        <div class="text-info">Nome</div>
+                        <input type="text" placeholder="Digite seu nome" class="input-form" formControlName="nome"
+                            required="">
+                        <label
+                            *ngIf="(registerForm.get('nome')?.errors?.['required']) && registerForm.get('nome')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+                    <!-- Campo de Sobrenome -->
+                    <div class="group-input">
+                        <div class="text-info">Sobrenome</div>
+                        <input type="text" placeholder="Digite seu sobrenome" class="input-form"
+                            formControlName="sobrenome" required="">
+                        <label
+                            *ngIf="(registerForm.get('sobrenome')?.errors?.['required']) && registerForm.get('sobrenome')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+                    <!-- Campo de Estado -->
+                    <div class="group-input">
+                        <div class="text-info">Estado</div>
+                        <input type="text" placeholder="Digite seu estado" class="input-form" formControlName="estado"
+                            required="">
+                        <label
+                            *ngIf="(registerForm.get('estado')?.errors?.['required']) && registerForm.get('estado')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+                    <!-- Campo de Cidade -->
+                    <div class="group-input">
+                        <div class="text-info">Cidade</div>
+                        <input type="text" placeholder="Digite sua cidade" class="input-form" formControlName="cidade"
+                            required>
+                        <label
+                            *ngIf="(registerForm.get('cidade')?.errors?.['required']) && registerForm.get('cidade')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+                    <!-- Campo de Rua -->
+                    <div class="group-input">
+                        <div class="text-info">Rua</div>
+                        <input type="text" placeholder="Digite sua rua" class="input-form" formControlName="rua"
+                            required>
+                        <label
+                            *ngIf="(registerForm.get('rua')?.errors?.['required']) && registerForm.get('rua')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+                    <!-- Campo de Complemento -->
+                    <div class="group-input">
+                        <div class="text-info">Complemento</div>
+                        <input type="text" placeholder="Digite o complemento" class="input-form"
+                            formControlName="complemento">
+                    </div>
+
+                    <!-- Campo de RG -->
+                    <div class="group-input">
+                        <div class="text-info">RG</div>
+                        <input type="text" placeholder="Digite seu RG" class="input-form" formControlName="rg" required>
+                        <label *ngIf="(registerForm.get('rg')?.errors?.['required']) && registerForm.get('rg')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+                    <!-- Campo de CPF -->
+                    <div class="group-input">
+                        <div class="text-info">CPF</div>
+                        <input type="text" placeholder="Digite seu CPF" class="input-form" formControlName="cpf"
+                            required>
+                        <label
+                            *ngIf="(registerForm.get('cpf')?.errors?.['required']) && registerForm.get('cpf')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+                    <!-- Campo de Senha -->
+                    <div class="group-input">
+                        <div class="text-info">Senha (6 dígitos)</div>
+                        <input type="password" placeholder="Digite sua senha (6 dígitos)" class="input-form"
+                            formControlName="senha" minlength="6" maxlength="6" required>
+                        <label
+                            *ngIf="(registerForm.get('senha')?.errors?.['required'] || registerForm.get('senha')?.errors?.['minlength'] || registerForm.get('senha')?.errors?.['maxlength']) && registerForm.get('senha')?.touched"
+                            class="error-input">A senha deve ter exatamente 6 dígitos</label>
+                    </div>
+
+                    <!-- Campo de Email -->
+                    <div class="group-input">
+                        <div class="text-info">Email</div>
+                        <input type="email" placeholder="Digite seu e-mail" class="input-form" formControlName="email"
+                            required>
+                        <label
+                            *ngIf="(registerForm.get('email')?.errors?.['required'] || registerForm.get('email')?.errors?.['email']) && registerForm.get('email')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+
+                    <!-- Botão de Cadastrar -->
+                    <div class="group-input">
+                        <button type="submit" class="register-button" [ngClass]="{'disabled' : !registerForm.valid}"
+                            [disabled]="!registerForm.valid">Cadastrar</button>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
