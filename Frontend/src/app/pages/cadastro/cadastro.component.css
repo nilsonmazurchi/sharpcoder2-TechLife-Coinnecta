@@ -4,33 +4,39 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #012B3F;
 }
 
-.text-info{
+.text-info {
     color: #E2DD74 !important;
 }
 
 .logo {
     display: block;
-    margin: 0 auto; /* Centraliza a imagem */
+    margin: 0 auto;
+    /* Centraliza a imagem */
+    width: 200px;
+}
+
+.logo:hover {
+    cursor: pointer;
 }
 
 .register-container-central {
     max-width: 600px;
     width: 80%;
     padding: 20px;
+    padding-bottom: 0;
     background-color: #012B3F;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
 .register-title {
-    font-size: 24px;
+    text-align: center;
+    font-size: 30px;
     font-weight: bold;
-    margin-bottom: 20px;
-    color: #E2DD74;
+    margin: 20px;
+    color: white;
 }
 
 .form-container {
@@ -57,14 +63,31 @@
 
 .error-input {
     color: red;
-    font-size: 14px;
+    font-size: 10px;
 }
 
 .register-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 10px;
+    border-radius: 10px;
     cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.register-button:hover {
+    background-color: #000ece !important;
+    /* Azul mais escuro */
+}
+.register-button:hover:not(.disabled) {
+    background-color: #000ece;
+    /* Azul mais escuro */
+}
+.disabled {
+    opacity: 0.6;
 }
