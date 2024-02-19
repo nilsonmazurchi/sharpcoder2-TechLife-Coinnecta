@@ -36,7 +36,7 @@
                 <!-- Campo de Email -->
                 <div class="group-input">
                     <div class="text-info">Email</div>
-                    <input type="email" placeholder="Digite seu e-mail" class="input-form" formControlName="email"
+                    <input type="email" formControlName="email" [(ngModel)]="loginObj.email" placeholder="Digite seu e-mail" class="input-form" formControlName="email"
                         required="">
                     <label
                         *ngIf="(loginForm.get('email')?.errors?.['required'] || loginForm.get('email')?.errors?.['email']) && loginForm.get('email')?.touched"
@@ -46,7 +46,7 @@
                 <!-- Campo de Senha -->
                 <div class="group-input">
                     <div class="text-info">Senha</div>
-                    <input type="password" placeholder="Digite sua senha" class="input-form" formControlName="senha"
+                    <input type="password" formControlName="senha" [(ngModel)]="loginObj.senha" placeholder="Digite sua senha" class="input-form" formControlName="senha"
                         required="">
                     <label *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched"
                         class="error-input">Campo obrigatório</label>
@@ -66,7 +66,7 @@
 
                 <!-- Botão para criar conta -->
                 <button class="criarconta-button" (click)="goToRegister()">Abrir Conta</button>
-            </form>
+                </form>
         </div>
 
     </div>
