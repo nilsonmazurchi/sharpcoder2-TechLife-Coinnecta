@@ -5,6 +5,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import {SolutionsComponent} from "./components/solutions/solutions.component";
 import { HistoricoComponent } from './pages/historico/historico.component';
+import { AuthGuard} from './auth.guard';
 
 
 
@@ -14,6 +15,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'solucoes', component: SolutionsComponent },
-  { path: 'historico', component: HistoricoComponent },
+  { path: 'historico', component: HistoricoComponent, canActivate: [AuthGuard]  },
   { path: 'sobre', component: SobreComponent },
 ]
