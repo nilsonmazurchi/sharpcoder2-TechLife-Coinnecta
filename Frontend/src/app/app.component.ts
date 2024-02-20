@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from "./pages/login/login.component";
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { RouterOutlet } from '@angular/router';
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -10,7 +11,7 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [CommonModule, RouterOutlet, LoginComponent, CadastroComponent]
+  imports: [CommonModule, RouterOutlet, LoginComponent, CadastroComponent, RouterLink]
 })
 export class AppComponent {
   title = 'sharpcoder2-TechLife-Coinnecta';
