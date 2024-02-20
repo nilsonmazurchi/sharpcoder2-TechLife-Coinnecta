@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import {SolutionsComponent} from "./components/solutions/solutions.component";
+import { HistoricoComponent } from './pages/historico/historico.component';
 
 
 
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'sobre', component: SobreComponent },
-  { path: 'solucoes', component: SolutionsComponent }
+  { path: 'solucoes', component: SolutionsComponent },
+  { path: 'historico', component: HistoricoComponent },
 ]
