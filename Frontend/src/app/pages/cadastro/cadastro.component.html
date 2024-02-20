@@ -3,7 +3,7 @@
     <!-- Container central -->
     <div class="register-container-central">
         <!-- Cabeçalho -->
-        <img src="/assets/image/logo-sem_fundo.png" class="logo" alt="logo-sem_fundo" (click)="redirectHome()">
+        <img src="../../../assets/image/logo-sem_fundo.png" class="logo" alt="logo-sem_fundo" (click)="redirectHome()">
         <div class="register-container-header">
             <div class="register-title">
                 Cadastro de Cliente
@@ -66,6 +66,11 @@
                         <button type="submit" class="register-button" [ngClass]="{'disabled' : !registerForm.valid}"
                             [disabled]="!registerForm.valid">Criar Conta</button>
                     </div>
+
+                    <div class="group-input">
+                        <button type="button" class="register-button" (click)="redirectHome()">Voltar</button>
+                    </div>
+
                     <button type="button" (click)="limparLocalStorage()">Limpar LocalStorage</button>
                 </form>
             </div>
