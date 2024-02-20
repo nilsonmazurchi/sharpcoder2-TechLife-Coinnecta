@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CadastroModel } from '../cadastro/cadastro.component';
 import { DadosService } from '../../servico/dados.service';
+import { AuthService } from '../../servico/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
-    private DadosService: DadosService 
+    private DadosService: DadosService,
+    private AuthService: AuthService
   ) { }
   loginForm!: FormGroup;
   
@@ -44,6 +46,7 @@ export class LoginComponent {
         alert('Login realizado com sucesso!');
         this.DadosService.setNome(isUserPresent.nome);
         this.DadosService.setSobrenome(isUserPresent.sobrenome);
+        this.AuthService.login();
         this.router.navigateByUrl('/historico');
       } else {
         alert('Usuário ou senha inválidos')
