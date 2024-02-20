@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CadastroModel } from '../cadastro/cadastro.component';
+import { DadosService } from '../../servico/dados.service';
+import { AuthService } from '../../servico/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,12 @@ import { CadastroModel } from '../cadastro/cadastro.component';
 })
 export class LoginComponent {
 
-  constructor(public formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    public formBuilder: FormBuilder,
+    private router: Router,
+    private DadosService: DadosService,
+    private AuthService: AuthService
+  ) { }
   loginForm!: FormGroup;
   
   loginObj: LoginModel  = new LoginModel();
@@ -37,7 +44,10 @@ export class LoginComponent {
       const isUserPresent =  users.find( (user:CadastroModel)=> user.email == this.loginObj.email && user.senha == this.loginObj.senha);
       if(isUserPresent != undefined) {
         alert('Login realizado com sucesso!');
-        this.router.navigateByUrl('/home');
+        this.DadosService.setNome(isUserPresent.nome);
+        this.DadosService.setSobrenome(isUserPresent.sobrenome);
+        this.AuthService.login();
+        this.router.navigateByUrl('/historico');
       } else {
         alert('Usuário ou senha inválidos')
       }
@@ -54,17 +64,21 @@ export class LoginComponent {
   }
 
   redirectHome() {
-    this.router.navigateByUrl('/home');
+    this.router.navigate(['/home']);
   }
   }
 
 export class LoginModel  { 
   email: string;
   senha: string;
+  nome: string;
+  sobrenome: string
 
   constructor() {
     this.email = ""; 
-    this.senha= ""
+    this.senha = "";
+    this.nome = "";
+    this.sobrenome = ""
   }
 }
 

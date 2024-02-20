@@ -1,0 +1,17 @@
+<article class="container-lg  mx-auto my-5   p-4    row ">
+  <div class=" container-md col d-flex  text-center flex-column justify-content-center">
+    <p class="ms-0 mb-0">Bem vindo {{nome}} {{sobrenome}}!</p>
+  </div>
+  <div class=" container-md col text-center   ">
+    <p class="ms-0   h5" > Saldo em conta</p>
+    <button class="btn btn-primary m-0 exibir" *ngIf="!exibirConteudo" (click)="botaoConteudo()">Exibir Saldo </button>
+    <p  (click)="botaoConteudo()" *ngIf="exibirConteudo"> <span id="saldo" class="h1 badge m-0 text-warning "> R$ 2.000,00</span> </p>
+  </div>
+</article>
+
+
+
+
+
+
+

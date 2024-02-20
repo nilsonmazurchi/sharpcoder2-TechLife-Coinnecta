@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg   ">
+  <div class="container-fluid p-2">
+
+    <a class="navbar-brand text-warning " navigate="/home">
+      <img src="../../../assets/image/logo-sem_fundo.png"  alt="logo">
+    </a>
+    <!-- <a class="navbar-brand me-auto" href="#"><img src="/src/assets/image/Logo.ico" width="30" height="24" alt=""></a> -->
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-warning" id="offcanvasNavbarLabel ">Opções</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body ">
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active mx-lg-2   text-warning" aria-current="page">pix/qrcode</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active mx-lg-2 text-warning  " aria-current="page">Pagamentos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active mx-lg-2 text-warning " aria-current="page">transferencia</a>
+          </li>
+
+
+        </ul>
+
+      </div>
+    </div>
+    <button class="navbar-toggler me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="nav-link mx-lg-2 btn text-warning custom" routerLink="/home">Sair</a>
+
+  </div>
+</nav>
+
