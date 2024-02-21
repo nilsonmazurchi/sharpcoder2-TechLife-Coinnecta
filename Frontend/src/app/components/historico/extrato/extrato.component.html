@@ -2,68 +2,83 @@
 <!-- Seu componente pai -->
 
 <section class="container">
-  <h2 class="text-center display-3">Histórico de Transações</h2>
+  <h2 class="text-center ">Histórico de Transações</h2>
   <hr>
   <div class="container-fluid row">
     <div class="col-md-4 container-fluid">
+      <div class=" text-center custom-background"><strong>21 FEV</strong></div>
+      <br>
       <app-transacao
         [titulo]="'Pagamento Efetuado'"
         [conta]="'Sefaz'"
-        [valor]="100.00"
-        [data]="'22/02/2024'">
+        [valor]=" 100.00"
+        [data]="'21/02/2024'">
       </app-transacao>
+      <br>
       <app-transacao
-        [titulo]="'Pagamento Efetuado'"
-        [conta]="'Sefaz'"
-        [valor]="100.00"
-        [data]="'22/02/2024'">
+        [titulo]="'Pix Enviado'"
+        [conta]="'Antonio Carlos Silva'"
+        [valor]="527.00"
+        [data]="'21/02/2024'">
       </app-transacao>
+      <br>
       <app-transacao
-        [titulo]="'Pagamento Efetuado'"
-        [conta]="'Sefaz'"
-        [valor]="100.00"
-        [data]="'22/02/2024'">
+        [titulo]="'Transferência Recebida'"
+        [conta]="'Ana Maria Jesus'"
+        [valor]="1000.00"
+        [data]="'21/02/2024'">
       </app-transacao>
+      <br>
     </div>
     <div class="col-md-4 container-fluid">
+      <div class="text-center custom-background"><strong>22 FEV</strong></div>
+      <br>
       <app-transacao
         [titulo]="'Pagamento Efetuado'"
-        [conta]="'Sefaz'"
-        [valor]="100.00"
+        [conta]="'Solid Tech'"
+        [valor]="1500.00"
         [data]="'22/02/2024'">
       </app-transacao>
+      <br>
       <app-transacao
         [titulo]="'Pagamento Efetuado'"
-        [conta]="'Sefaz'"
-        [valor]="100.00"
+        [conta]="'Invest Certo'"
+        [valor]="2000.00"
         [data]="'22/02/2024'">
       </app-transacao>
+      <br>
       <app-transacao
         [titulo]="'Pagamento Efetuado'"
-        [conta]="'Sefaz'"
-        [valor]="100.00"
+        [conta]="'Atacado Central'"
+        [valor]="300.60"
         [data]="'22/02/2024'">
       </app-transacao>
+      <br>
     </div>
     <div class="col-md-4  container-fluid">
+      <div class="text-center custom-background"><strong>23 FEV</strong></div>
+      <br>
+      <app-transacao
+        [titulo]="'Pix Enviado'"
+        [conta]="'José Silva'"
+        [valor]="10.00"
+        [data]="'23/02/2024'">
+      </app-transacao>
+      <br>
       <app-transacao
         [titulo]="'Pagamento Efetuado'"
         [conta]="'Sefaz'"
         [valor]="100.00"
-        [data]="'22/02/2024'">
+        [data]="'23/02/2024'">
       </app-transacao>
+      <br>
       <app-transacao
-        [titulo]="'Pagamento Efetuado'"
-        [conta]="'Sefaz'"
-        [valor]="100.00"
-        [data]="'22/02/2024'">
+        [titulo]="'Tranferência Recebida'"
+        [conta]="'Carlos Antonio'"
+        [valor]="500.00"
+        [data]="'23/02/2024'">
       </app-transacao>
-      <app-transacao
-        [titulo]="'Pagamento Efetuado'"
-        [conta]="'Sefaz'"
-        [valor]="100.00"
-        [data]="'22/02/2024'">
-      </app-transacao>
+      <br>
     </div>
   </div>
 </section>
