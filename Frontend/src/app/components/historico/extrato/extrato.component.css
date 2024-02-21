@@ -1,0 +1,14 @@
+.col-md-4 {
+    border-right: 1px solid #ccc;
+    padding-right: 15px;
+}
+.col-md-4:last-child {
+    border-right: none;
+}
+
+.custom-background {
+    background-color: rgba(20, 53, 171, 0.3); 
+    padding: 10px; 
+    border-radius: 5px; 
+    color: #ffffff; 
+}
