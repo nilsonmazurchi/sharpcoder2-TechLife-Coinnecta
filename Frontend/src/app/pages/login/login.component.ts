@@ -6,13 +6,15 @@ import { CommonModule } from '@angular/common';
 import { CadastroModel } from '../cadastro/cadastro.component';
 import { DadosService } from '../../servico/dados.service';
 import { AuthService } from '../../servico/auth.service';
+import { FooterComponent } from "../../components/footer/footer.component";
+import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    standalone: true,
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css',
+    imports: [ReactiveFormsModule, HttpClientModule, CommonModule, FooterComponent, NavbarComponent]
 })
 export class LoginComponent {
 

@@ -3,13 +3,15 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from "../../components/footer/footer.component";
+import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
-  selector: 'app-cadastro',
-  standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CommonModule, FormsModule],
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.css'
+    selector: 'app-cadastro',
+    standalone: true,
+    templateUrl: './cadastro.component.html',
+    styleUrl: './cadastro.component.css',
+    imports: [ReactiveFormsModule, HttpClientModule, CommonModule, FormsModule, FooterComponent, NavbarComponent]
 })
 
 export class CadastroComponent {
