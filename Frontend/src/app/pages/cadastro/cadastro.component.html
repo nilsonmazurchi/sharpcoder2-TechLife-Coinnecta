@@ -16,8 +16,8 @@
                     <!-- Campo de Nome -->
                     <div class="group-input">
                         <div class="text-info">Nome*</div>
-                        <input type="text" formControlName="nome" [(ngModel)]="cadastroObj.nome "placeholder="Digite seu nome" class="input-form" formControlName="nome"
-                            required="">
+                        <input type="text" formControlName="nome" [(ngModel)]="cadastroObj.nome "
+                            placeholder="Digite seu nome" class="input-form" formControlName="nome" required="">
                         <label
                             *ngIf="(registerForm.get('nome')?.errors?.['required']) && registerForm.get('nome')?.touched"
                             class="error-input">Campo obrigatório</label>
@@ -26,8 +26,9 @@
                     <!-- Campo de Sobrenome -->
                     <div class="group-input">
                         <div class="text-info">Sobrenome*</div>
-                        <input type="text" formControlName="sobrenome" [(ngModel)]="cadastroObj.sobrenome "placeholder="Digite seu sobrenome" class="input-form"
-                            formControlName="sobrenome" required="">
+                        <input type="text" formControlName="sobrenome" [(ngModel)]="cadastroObj.sobrenome "
+                            placeholder="Digite seu sobrenome" class="input-form" formControlName="sobrenome"
+                            required="">
                         <label
                             *ngIf="(registerForm.get('sobrenome')?.errors?.['required']) && registerForm.get('sobrenome')?.touched"
                             class="error-input">Campo obrigatório</label>
@@ -35,8 +36,9 @@
                     <!-- Campo de CPF -->
                     <div class="group-input">
                         <div class="text-info">CPF*</div>
-                        <input type="text" formControlName="cpf" [(ngModel)]="cadastroObj.cpf "placeholder="Digite seu CPF" class="input-form" formControlName="cpf"
-                            minlength="11" maxlength="11" required="">
+                        <input type="text" formControlName="cpf" [(ngModel)]="cadastroObj.cpf "
+                            placeholder="Digite seu CPF" class="input-form" formControlName="cpf" minlength="11"
+                            maxlength="11" required="">
                         <label
                             *ngIf="(registerForm.get('cpf')?.errors?.['required'] || registerForm.get('cpf')?.errors?.['pattern']) && registerForm.get('cpf')?.touched"
                             class="error-input">O CPF deve conter 11 dígitos numéricos</label>
@@ -46,8 +48,9 @@
                     <!-- Campo de Senha -->
                     <div class="group-input">
                         <div class="text-info">Senha (6 dígitos)*</div>
-                        <input type="password" formControlName="senha" [(ngModel)]="cadastroObj.senha" placeholder="Digite sua senha (6 dígitos)" class="input-form"
-                            formControlName="senha" minlength="6" maxlength="6" required="">
+                        <input type="password" formControlName="senha" [(ngModel)]="cadastroObj.senha"
+                            placeholder="Digite sua senha (6 dígitos)" class="input-form" formControlName="senha"
+                            minlength="6" maxlength="6" required="">
                         <label
                             *ngIf="(registerForm.get('senha')?.errors?.['required'] || registerForm.get('senha')?.errors?.['pattern']) && registerForm.get('senha')?.touched"
                             class="error-input">A senha deve conter 6 dígitos numéricos</label>
@@ -56,7 +59,8 @@
                     <!-- Campo de Email -->
                     <div class="group-input">
                         <div class="text-info">Email*</div>
-                         <input type="email" name="email" formControlName="email" [(ngModel)]="cadastroObj.email" placeholder="Digite seu e-mail" class="input-form" required="">
+                        <input type="email" name="email" formControlName="email" [(ngModel)]="cadastroObj.email"
+                            placeholder="Digite seu e-mail" class="input-form" required="">
                         <label
                             *ngIf="(registerForm.get('email')?.errors?.['required'] || registerForm.get('email')?.errors?.['email']) && registerForm.get('email')?.touched"
                             class="error-input">Campo obrigatório</label>
@@ -68,10 +72,13 @@
                     </div>
 
                     <div class="group-input">
-                        <button type="button" class="register-button" (click)="redirectHome()">Voltar</button>
+                        <button type="button" class="return-button" (click)="redirectHome()">Voltar</button>
                     </div>
 
-                    <button type="button" (click)="limparLocalStorage()">Limpar LocalStorage</button>
+                    <!-- <div class="group-input">
+                        <button type="button" class="clear-localStorage-button" (click)="limparLocalStorage()">Limpar LocalStorage</button>
+                    </div> -->
+
                 </form>
             </div>
 
@@ -80,3 +87,4 @@
     </div>
 
 </div>
+<app-footer></app-footer>
