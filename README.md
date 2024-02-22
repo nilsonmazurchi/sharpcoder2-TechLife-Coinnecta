@@ -29,8 +29,7 @@ Projeto em construção
 
 ### Acesso ao Projeto
 
-
-
+https://coinnecta.vercel.app/home
 
 ### Pessoas Desenvolvedoras
 
