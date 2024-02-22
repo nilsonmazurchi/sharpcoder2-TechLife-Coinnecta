@@ -24,3 +24,8 @@
 .position-relative, app-footer{
   padding-bottom: 25px;
 }
+
+.texto {
+  color: white;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0);
+}
