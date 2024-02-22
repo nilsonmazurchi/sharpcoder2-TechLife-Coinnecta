@@ -9,7 +9,7 @@ Esta é uma segunda task(tarefa) do projeto Hackadev que faz parte do curso de f
 A aplicação se refere a uma futura fintech chamada Coinnecta desenvolvida em Angular, Typescript, HTML, CSS e Bootstrap.
 Ela é composta pelas páginas Home, Sobre, Soluções, Login, Cadastro e Histórico sendo que elas foram desenvolvidas com responsividade para telas menores.
 
-![Imagem da página Home](../Frontend/src/assets/image/home.png)
+![Imagem da página Home](./src/assets/image/home.png)
  
 ### Funcionalidades
 Ao entrar na aplicação o usuário é direcionado para a página Home(página inicial) onde encontra a barra de navegação que possui botões com as rotas para as páginas: Home, Sobre, Soluções, Login e Cadastrar.
