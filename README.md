@@ -1,4 +1,4 @@
- ![Imagem representativa da Coinnecta](../Frontend/src/assets/image/logo-sem_fundo.png)  
+ ![Imagem representativa da Coinnecta](./src/assets/image/logo-sem_fundo.png)  
 
 # Programa SharpCoders
 Esta é uma segunda task(tarefa) do projeto Hackadev que faz parte do curso de formação fullstack SharpCoders que é mediado pela ÍmãTech em parceria com a  MXM Sistemas.
