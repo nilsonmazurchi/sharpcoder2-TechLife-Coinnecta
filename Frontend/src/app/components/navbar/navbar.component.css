@@ -8,3 +8,18 @@
   width: auto;
   padding-left: 10px;
 }
+
+.custom-toggler {
+  background-color: transparent;
+  border: none;
+}
+
+.custom-icon {
+  font-size: 30px; /* Ajuste conforme necessário */
+  color: #f39c12; /* Cor branca para as linhas do ícone */
+}
+
+
+
+
+

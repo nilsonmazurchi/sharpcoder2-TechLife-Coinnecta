@@ -8,11 +8,7 @@
   outline: none;
 }
 
-.navbar-toggler-icon{
-  background-color: white;
-  border-radius: 10px;
-  padding: 10px;
-}
+
 .nav-link{
   transition: .5s;
 
@@ -38,4 +34,8 @@
   max-height: 60px;
   width: auto;
   padding-left: 10px;
+}
+
+.fundo{
+  background-color: #012B3F;
 }

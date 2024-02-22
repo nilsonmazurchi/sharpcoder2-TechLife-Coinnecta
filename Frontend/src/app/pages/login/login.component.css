@@ -1,26 +1,23 @@
-/* Estilo para o container principal */
+.backgroud-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #012B3F;
+}
+
 .login-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 30px;
+    margin-left: 200px;
+    margin-right: 200px;
     background-color: #f5f5f5;
     /* Cinza claro */
     padding: 20px;
-    border-radius: 10px;
-}
-
-.login-container::after {
-    content: '';
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: -350px;
-    /* Desloca o pseudo-elemento para a área da margem inferior */
-    background-color: #012B3F;
-    z-index: -1;
-    /* Coloca o pseudo-elemento atrás do conteúdo da div */
+    padding-left: 100px;
+    padding-right: 100px;
+    border-radius: 15px;
 }
 
 .login-container-central {
@@ -34,9 +31,11 @@
     width: 200px;
     margin-bottom: 20px;
 }
-.logo:hover{
+
+.logo:hover {
     cursor: pointer;
 }
+
 /* Estilo para o título */
 .login-title {
     font-style: normal;
@@ -90,7 +89,7 @@
     object-fit: cover;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1155px) {
     .card {
         width: 50px;
         height: 50px;
@@ -103,6 +102,13 @@
             width: 15px;
             height: 15px;
         }
+    }
+
+    .login-container {
+        margin-left: 30px;
+        margin-right: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
@@ -136,7 +142,7 @@
         border-radius: 5px;
         font-size: 14px;
     }
-    
+
     .error-input {
         font-size: 10px;
         color: red;
@@ -147,6 +153,7 @@
 .criarconta-button {
     width: 100%;
     margin-top: 10px;
+    margin-bottom: 20px;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
