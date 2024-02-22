@@ -1,27 +1,81 @@
-# Sharpcoder2TechLifeCoinnecta
+ ![Imagem representativa da Coinnecta](../Frontend/src/assets/image/logo-sem_fundo.png)  
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
+# Programa SharpCoders
+Esta é uma segunda task(tarefa) do projeto Hackadev que faz parte do curso de formação fullstack SharpCoders que é mediado pela ÍmãTech em parceria com a  MXM Sistemas.
 
-## Development server
+## Hackadev
+ É um projeto prático em grupo de longo prazo que simula ambiente das empresas. Nesta task o desafio foi criar uma aplicação Front-end de uma Fintech.
+# Aplicação
+A aplicação se refere a uma futura fintech chamada Coinnecta desenvolvida em Angular, Typescript, HTML, CSS e Bootstrap.
+Ela é composta pelas páginas Home, Sobre, Soluções, Login, Cadastro e Histórico sendo que elas foram desenvolvidas com responsividade para telas menores.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Imagem da página Home](../Frontend/src/assets/image/home.png)
+ 
+### Funcionalidades
+Ao entrar na aplicação o usuário é direcionado para a página Home(página inicial) onde encontra a barra de navegação que possui botões com as rotas para as páginas: Home, Sobre, Soluções, Login e Cadastrar.
 
-## Code scaffolding
+Home: página principal de nossa aplicação com uma breve descrição dos serviços ofertados pela Fintech. Possui um link central no carrossel que direciona para página de cadastro e um botão na parte inferior que direciona para página de Soluções.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Sobre: nesta página há um curto relato sobre quem somos e a nossa história.
+Soluções: Nela há um destaque da Gateway de Pagamento e suas soluções.
 
-## Build
+Cadastrar: Nesta página tem cinco campos para preencher que são nome, sobrenome, CPF, senha e e-mail, e assim se cria uma conta nova adicionando as informações e clicando no botão de Criar Conta. Também se tem um botão de Voltar caso o usuário queira voltar para a Home.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Login: nesta há os campos e-mail e senha e botão de Login, se forem informados os dados corretos o usuário faz o login e é direcionado para a página de Histórico.
+Histórico: A barra de navegação dela possui os seguintes botões pix/qrcode, Pagamentos e Transferência, estas funcionalidades que não estão desenvolvidas junto com a página, que é estática, será implementada de forma dinâmica posteriormente. Nela há dois botões um de Exibir Saldo que ao ser clicado mostra um dado estático de saldo em conta e outro de Sair que ao ser clicado volta para a página Home. Para acessar esta página tem que estar logado. 
 
-## Running unit tests
+### Status do Projeto
+Projeto em construção
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Acesso ao Projeto
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Pessoas Desenvolvedoras
+
+<div style="display: flex; flex-direction: row;">
+  <div style="margin-right: 10px;">
+    <img loading="lazy" src="https://avatars.githubusercontent.com/u/101181100?v=4" width=115><br>
+    <sub>Matheus Emanuel</sub><br>
+    <a href="https://github.com/MatheusEmanuelsc">Github</a><br>
+    <a href="linkedin.com/in/matheus-emanuel-/">Linkedin</a>
+  </div>
+  <div>
+    <img loading="lazy" src="https://avatars.githubusercontent.com/u/101017836?s=400&v=4" width=115><br>
+    <sub>Camila Berti</sub><br>
+    <a href="https://github.com/berticamila">Github</a><br>
+    <a href="linkedin.com/in/camila-berti-dos-santos-backend">Linkedin</a>
+  </div>
+  <div>
+    <img loading="lazy" src="https://avatars.githubusercontent.com/u/107007338?v=4" width=115><br>
+    <sub>Eveliny Muniz</sub><br>
+    <a href="https://github.com/Evelinymuniz"> Github</a><br>
+    <a href="linkedin.com/in/eveliny-muniz">Linkedin</a>
+  </div>
+  <div>
+    <img loading="lazy" src="https://avatars.githubusercontent.com/u/119083968?v=4" width=115><br>
+    <sub>Bianca Santo</sub><br>
+    <a href="https://github.com/Bibiaesanto">Github</a><br>
+    <a href="linkedin.com/in/biancaespiritosanto">Linkedin</a>
+  </div>
+  <div>
+    <img loading="lazy" src="https://avatars.githubusercontent.com/u/70476796?v=4" width=115><br>
+    <sub>Matheus Panobianco</sub><br>
+    <a href="https://github.com/matheuspanobianco">Github</a><br>
+    <a href="linkedin.com/in/matheuspanobianco">Linkedin</a>
+  </div>
+   <div>
+    <img loading="lazy" src="https://avatars.githubusercontent.com/u/62041832?v=4" width=115><br>
+    <sub>Fábio Souza</sub><br>
+    <a href="https://github.com/fhssouza">Github</a><br>
+    <a href="linkedin.com/in/fhssouza-devjava ">Linkedin</a>
+  </div>
+  <div>
+    <img loading="lazy" src="https://avatars.githubusercontent.com/u/55157982?v=4" width=115><br>
+    <sub>Nilson Mazurchi</sub><br>
+    <a href="https://github.com/nilsonmazurchi">Github</a><br>
+    <a href="linkedin.com/in/nilsonmazurchi">Linkedin</a>
+  </div>
+
+</div>
