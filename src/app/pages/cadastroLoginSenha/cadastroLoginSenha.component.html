@@ -1,0 +1,176 @@
+<div class="register-container">
+
+    <!-- Container central -->
+    <div class="register-container-central">
+        <!-- Cabeçalho -->
+        <img src="../../../assets/image/logo-sem_fundo.png" class="logo" alt="logo-sem_fundo">
+        <div class="register-container-header">
+            <div class="register-title">
+                Cadastro de Cliente
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <div class="form-container">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+                    <!-- Campo de Nome -->
+                    <div class="group-input">
+                        <div class="text-info">Nome*</div>
+                        <input type="text" formControlName="nome"
+                            placeholder="Digite seu nome" class="input-form" formControlName="nome"  
+                            [class.is-invalid]="form.get('nome')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)"
+                            required>
+                            <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)"
+                            class="invalid-feedback">
+                            <div *ngIf="form.get('name')?.errors?.['nomeInvalido']">
+                                <div *ngIf="form.get('nome')?.errors?.['razao'] === 'Palavras Insuficientes'">Por favor,
+                                    informe
+                                    seu nome e sobrenome.</div>
+                                <div *ngIf="form.get('nome')?.errors?.['razao'] === 'Palavra muito pequena'">Cada
+                                    nome/sobrenome
+                                    deve ter pelo menos 3 letras.</div>
+                                <div *ngIf="form.get('nome')?.errors?.['razao'] === 'ICaracter Invalido'"> O nome não
+                                    pode
+                                    conter símbolos e números.</div>
+                            </div>
+                    </div>                    
+                </div>
+                <!-- Campo de DDD -->
+                <div class="group-input telefone-group">
+                    <div class="text-info">DDD</div>
+                    <select class="form-select" size="1" formControlName="ddd" id="DDD"
+                        [class.is-invalid]="form.get('ddd')?.invalid && (form.get('ddd')?.dirty || form.get('ddd')?.touched)"
+                        required>
+                        <option value="" selected>Selecione</option>
+                        <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
+                    </select>
+                    <div *ngIf="form.get('ddd')?.invalid && (form.get('ddd')?.dirty || form.get('ddd')?.touched)"
+                        class="invalid-feedback">
+                        Por favor, selecione um DDD.
+                    </div>
+            
+            
+                <div class="text-info">Telefone</div>                
+                    <input type="text" class="form-control" id="telefone" formControlName="telefone"
+                        placeholder="Digite seu telefone"
+                        [class.is-invalid]="form.get('telefone')?.invalid && (form.get('telefone')?.dirty || form.get('telefone')?.touched)"
+                        required>
+                    <div *ngIf="form.get('telefone')?.invalid && (form.get('telefone')?.dirty || form.get('telefone')?.touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="form.get('telefone')?.errors?.['telefoneInvalido']">Número de telefone inválido.</div>
+                    </div>                  
+        </div>
+            <!-- Campo de Email -->
+            <div class="group-input">
+                <div class="text-info">Email</div>                
+                <input type="email" id="email" formControlName="email" class="form-control"
+                placeholder="Digite seu email"
+                [class.is-invalid]="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) ||form.errors?.['emailUsuarioExiste']"
+                required>
+            <span *ngIf="form.errors?.['emailUsuarioExiste']" class="text-danger">Email já cadastrado.</span>
+            <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) ||form.errors?.['emailExists']"
+                class="invalid-feedback">
+                <div *ngIf="form.get('email')?.errors?.['required']">
+                    Informe seu email.
+                </div>
+                <div *ngIf="form.get('email')?.errors?.['email']">
+                    Informe um endereço de email válido.
+                </div>
+            </div>             
+        </div>
+        <!-- Campo de CPF -->
+        <div class="group-input">
+            <div class="text-info">CPF</div>                
+            <input type="text" class="form-control" id="cpf" formControlName="cpf" aria-describedby="cpf"
+                        placeholder="Digite seu CPF"
+                        [class.is-invalid]="form.get('cpf')?.invalid && (form.get('cpf')?.dirty || form.get('cpf')?.touched) ||form.errors?.['cpfUsuarioExiste']"
+                        required>
+                    <span *ngIf="form.errors?.['cpfUsuarioExiste']" class="text-danger">CPF já cadastrado.</span>
+
+                    <div *ngIf="form.get('cpf')?.invalid && (form.get('cpf')?.dirty || form.get('cpf')?.touched)"
+                        class="invalid-feedback">
+                        <span *ngIf="form.get('cpf')?.errors?.['cpfInvalido'] === 'todoDigitoIgual'">Todos os dígitos do
+                            CPF não podem ser iguais.</span>
+                        <span *ngIf="form.get('cpf')?.errors?.['cpfInvalido'] === 'tamanhoInvalido'">O CPF deve conter
+                            exatamente 11 dígitos.</span>
+                            <span *ngIf="form.get('cpf')?.errors?.['cpfInvalido'] === 'naoNumero'">O CPF só pode conter números</span>
+                        <span *ngIf="form.get('cpf')?.errors?.['cpfInvalido'] === true">CPF inválido.</span>
+                    </div>
+                     
+    </div>
+    <!-- Campo de Data de Nascimento -->
+    <div class="group-input">
+        <div class="text-info">Data de Nascimento</div>                
+        <input type="date" class="form-control" formControlName="diaNascimento" id="diaNascimento"
+                        [class.is-invalid]="form.get('diaNascimento')?.invalid && (form.get('diaNascimento')?.dirty || form.get('diaNascimento')?.touched)"
+                        required>
+                    <div *ngIf="form.get('diaNascimento')?.invalid && (form.get('diaNascimento')?.dirty || form.get('diaNascimento')?.touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="form.get('diaNascimento')?.errors?.['diaNascimentoInvalido']">A data de nascimento deve ser
+                            anterior ao dia atual.</div>
+                        <div *ngIf="form.get('diaNascimento')?.errors?.['anoErrado']">Verifique o ano de nascimento.</div>
+                        <div *ngIf="form.get('diaNascimento')?.errors?.['anoFuturo']">Ano de nascimento não pode ser no
+                            futuro.</div>
+                    </div>
+                 
+</div>
+<!-- Campo de Senha -->
+<div class="group-input">
+    <div class="text-info">Senha (apenas numeros)</div>                
+    <div class="input-group">
+        <input [type]="mostrarSenha ? 'text' : 'password'" class="form-control"
+                            formControlName="senha" id="senha" placeholder="Crie uma senha de 6 números"
+                            [class.is-invalid]="form.errors?.['senhaIgualAniversario'] || (form.get('senha')?.invalid && (form.get('senha')?.dirty || form.get('senha')?.touched))"
+                            required>
+                        <span class="input-group-text">
+                            <i class="bi" [class.bi-eye-fill]="!mostrarSenha" [class.bi-eye-slash-fill]="mostrarSenha"
+                                (click)="mostrarSenha = !mostrarSenha"></i>
+                        </span>
+                    </div>
+                    <span *ngIf="form.errors?.['senhaIgualAniversario'] ||form.errors?.['senhaIgualCPF']"
+                        class="invalid-feedback">
+                        Senha não pode ser igual ao CPF, data de aniversário, ou conter sequências do CPF.
+                    </span>
+                    <div *ngIf="form.get('senha')?.errors && (form.get('senha')?.dirty || form.get('senha')?.touched)"
+                        class="invalid-feedback">
+                        <span *ngIf="form.get('senha')?.errors?.['senhadInvalida']">
+                            A senha deve ter 6 números.
+                        </span>
+
+                    </div>
+</div>
+<!-- Campo de Confirmação de Senha -->
+<div class="group-input">
+    <div class="text-info">Confirme sua senha (apenas numeros)</div>                
+    <div class="input-group">
+        <input [type]="mostrarConfirmacaoSenha ? 'text' : 'password'" class="form-control" formControlName="confirmacaoSenha"
+            id="confirmacaoSenha" placeholder="Confirme sua senha"
+            [class.is-invalid]="form.errors?.['senhaCombina'] && (form.get('confirmacaoSenha')?.dirty || form.get('confirmacaoSenha')?.touched)"
+            required>
+        <span class="input-group-text">
+            <i class="bi" [class.bi-eye-fill]="!mostrarConfirmacaoSenha" [class.bi-eye-slash-fill]="mostrarConfirmacaoSenha"
+                (click)="mostrarConfirmacaoSenha = !mostrarConfirmacaoSenha"></i>
+        </span>
+    </div>
+    <div *ngIf="form.errors?.['senhaCombina'] && (form.get('confirmacaoSenha')?.dirty || form.get('confirmacaoSenha')?.touched)"
+        class="invalid-feedback">
+        As senhas não coincidem.
+    </div>
+</div>
+<div class="group-input">
+    <button type="submit" class="register-button" [disabled]="form.invalid">Continuar</button>
+</div>
+
+<div class="group-input">
+    <button type="button" class="return-button" (click)="redirectHome()">Voltar</button>
+</div>
+
+<!-- <div class="group-input">
+    <button type="button" class="clear-localStorage-button" (click)="apagarLocalStorege()">Limpar LocalStorage</button>
+</div> -->
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
