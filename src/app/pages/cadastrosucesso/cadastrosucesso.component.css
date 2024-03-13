@@ -1,0 +1,17 @@
+/* Estilo para o formulário de cadastro */
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #012B3F;
+}
+
+.titulo, .info {
+    color: #E2DD74 !important;
+}
+
+.info {
+    color: #E2DD74 !important;
+}
+

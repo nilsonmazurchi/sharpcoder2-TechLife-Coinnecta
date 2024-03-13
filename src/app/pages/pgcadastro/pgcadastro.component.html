@@ -1,0 +1,5 @@
+<app-cadastroLoginSenha *ngIf="currentForm === 'register'"
+            (formCompleted)="switchToSubsequentForm()"></app-cadastroLoginSenha>
+<app-cadastroEndereco *ngIf="currentForm === 'subsequent'" (formCompleted)="switchToSuccess()" (goBack)="
+            switchToFirst()"></app-cadastroEndereco>
+<app-cadastrosucesso *ngIf="currentForm === 'success'"></app-cadastrosucesso>

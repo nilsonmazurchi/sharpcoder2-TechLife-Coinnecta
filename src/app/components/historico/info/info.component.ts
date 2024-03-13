@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DadosService } from '../../../servico/dados.service';
+import { LocalStorageService, IUsuarioLogado } from '../../../servico/local-storage.service';
+
 
 @Component({
   selector: 'app-info',
@@ -11,18 +12,21 @@ import { DadosService } from '../../../servico/dados.service';
   styleUrl: './info.component.css'
 })
 export class InfoComponent implements OnInit{
+  user!: IUsuarioLogado;
   exibirConteudo: boolean = false;
   botaoConteudo() {
     this.exibirConteudo = !this.exibirConteudo;
   }
 
-  nome: string = '';
-  sobrenome: string = '';
-
-  constructor(private DadosService: DadosService) { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
-    this.DadosService.nome$.subscribe(nome => this.nome = nome);
-    this.DadosService.sobrenome$.subscribe(sobrenome => this.sobrenome = sobrenome);
+    const usuarioString = localStorage.getItem('usuariosLogado');
+    console.log(usuarioString);
+
+    // Use o valor padrão se 'usuarioString' for null
+    this.user = usuarioString ? JSON.parse(usuarioString) : { nome: '' };
+    
+    console.log(this.user);
   }
 }

@@ -1,0 +1,76 @@
+<div class="backgroud-container">
+    <div class="login-container">
+        <!-- Container central -->
+        <div class="login-container-central">
+            <!-- Cabeçalho -->
+            <img src="../../../assets/image/logo-sem_fundo.png" class="logo" alt="logo-sem_fundo">
+            <div class="login-container-header">
+                <div class="login-title">
+                    Bem-vindo(a) ao COINNECTA!
+                </div>
+                <div class="login-info">
+                    Coinnecta é a fintech que conecta você e suas finanças. Entre e aproveite!
+                </div>
+
+                <!-- Container dos cartões -->
+                <div class="card-container">
+                    <div class="card">
+                        <img src="../../../assets/image/foguete.png" class="card-image" alt="logo">
+                        <div class="card-text">Simples</div>
+                    </div>
+                    <div class="card">
+                        <img src="../../../assets/image/escudo.png" class="card-image" alt="logo">
+                        <div class="card-text">Seguro</div>
+                    </div>
+                    <div class="card">
+                        <img src="../../../assets/image/moedas.png" class="card-image" alt="logo">
+                        <div class="card-text">Acessível</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container do formulário -->
+            <div class="form-container">
+                <form class="form-inputs" [formGroup]="form">
+
+                    <!-- Campo de CPF -->
+                    <div class="group-input">
+                        <div class="text-info">CPF</div>
+                        <input type="text" class="form-control" id="cpf" formControlName="cpf" aria-describedby="cpf"
+            placeholder="13314331232"
+            [class.is-invalid]="form.get('cpf')?.invalid && (form.get('cpf')?.dirty || form.get('cpf')?.touched)"
+            required>
+            <div *ngIf="form.get('cpf')?.invalid && (form.get('cpf')?.dirty || form.get('cpf')?.touched)"
+                class="invalid-feedback">
+                <span *ngIf="form.get('cpf')?.errors?.['cpfInvalid'] === 'allDigitsEqual'">Todos os dígitos do
+                CPF não podem ser iguais.</span>
+                <span *ngIf="form.get('cpf')?.errors?.['cpfInvalid'] === 'invalidLength'">O CPF deve conter
+                exatamente 11 dígitos.</span>
+                <span *ngIf="form.get('cpf')?.errors?.['cpfInvalid'] === true">CPF inválido.</span>
+                <span *ngIf="form.get('cpf')?.errors?.['cpfInvalid'] === 'DoesNotExist'">O CPF informado não está cadastrado em nosso sistema. Por favor, verifique e tente novamente.</span>
+            </div>
+
+                    <!-- Campo de Senha -->
+                    <div class="group-input">
+                        <div class="text-info">Senha</div>
+                        <input class="form-control" placeholder="Digite sua senha" [value]="passwordMask" type="password" maxlength="6">
+                        <p *ngIf="erroMessage" class="error-message">{{ erroMessage }}</p>
+        <div class="text-criar-conta">
+        @for (pairPass of pairPasswordNums; track $index) {
+            <button class="tecla col" (click)="addToPassword(pairPass)">{{pairPass.firstNum}} ou {{pairPass.secondNum}}</button>
+            }
+            <button class="tecla col"(click)="deletePassword()" ><img src="../../../assets/image/Backspace.png" alt="Descrição da imagem">
+            </button>
+      </div>
+      <div>
+        <button class="btn btn-primary w-100 " (click)="isPasswordCorrect()">Login</button>
+      </div>
+            </div>
+        </div>
+        </form>
+</div>
+</div>
+</div>
+</div>
+
+<app-footer></app-footer>
