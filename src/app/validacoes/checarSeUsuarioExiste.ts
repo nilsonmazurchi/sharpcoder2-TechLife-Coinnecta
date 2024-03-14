@@ -6,6 +6,7 @@ export function checarSeUsuarioExite(localStorageService: LocalStorageService): 
     return (control: AbstractControl): ValidationErrors | null => {
         const email = control.get('email')?.value;
         const cpf = control.get('cpf')?.value;
+        const cnpj = control.get('cnpj')?.value;
 
         if (!email && !cpf) {
             return null;
@@ -19,6 +20,12 @@ export function checarSeUsuarioExite(localStorageService: LocalStorageService): 
         if (existeCPF) {
             return { cpfUsuarioExiste: true };
         }
+
+        const existeCNPJ = cnpj ? localStorageService.checarCNPJUsuarioExiste(cnpj) : false; // Verifique se o CNPJ existe
+        if (existeCNPJ) {
+            return { cnpjUsuarioExiste: true }; // Retorne uma mensagem indicando que o CNPJ já está cadastrado
+        }
+
 
         return null;
     };

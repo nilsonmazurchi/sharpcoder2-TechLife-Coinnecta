@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { registrosTipos } from '../tipos/tipos-registros';
 
 export interface IUsuarioLogado {
-  cpf: string;
+  cpf?: string;
+  cnpj?: string;
   nome: string;
 }
 
@@ -24,6 +25,16 @@ export class LocalStorageService {
   getSenha(cpf: string): string {
     const usuario = this.listaUsuario.find((usuario) => usuario.cpf === cpf);
     return usuario.senha;
+  }
+
+  getSenhaCNPJ(cnpj: string): string {
+    const usuario = this.listaUsuario.find((usuario) => usuario.cnpj === cnpj);
+    return usuario.senha;
+  }
+
+  getNomeCNPJ(cnpj: string): string {
+    const usuario = this.listaUsuario.find((usuario) => usuario.cnpj === cnpj);
+    return usuario.nome;
   }
 
   getUsuarioLogado(): IUsuarioLogado | null {
@@ -50,6 +61,12 @@ export class LocalStorageService {
     const CPFUsuarioExiste = this.listaUsuario.some((usuario) => usuario.cpf === cpf);
 
     return CPFUsuarioExiste;
+  }
+
+  checarCNPJUsuarioExiste(cnpj: number): boolean {
+    const CNPJUsuarioExiste = this.listaUsuario.some((usuario) => usuario.cnpj === cnpj);
+
+    return CNPJUsuarioExiste;
   }
 
   salvarUsuarioLocalStorage(usuario: registrosTipos): void {
