@@ -1,0 +1,157 @@
+<div class="register-container">
+
+    <!-- Container central -->
+    <div class="register-container-central">
+        <!-- Cabeçalho -->
+        <img src="../../../assets/image/logo-sem_fundo.png" class="logo" alt="logo-sem_fundo">
+        <div class="register-container-header">
+            <div class="register-title">
+                Cadastro de Cliente
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <div class="form-container">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+                    <!-- Campo de CEP -->
+                    <div class="group-input cep-estado">
+                        <div class="text-info">CEP (Apenas  números)</div>
+                        <input type="text" class="form-control" formControlName="cep" id="cep"
+                                    placeholder="Digite aqui o seu CEP"
+                                    [class.is-invalid]="form.get('cep')?.invalid && (form.get('cep')?.dirty || form.get('cep')?.touched)"
+                                    required>
+                                <button class="btn btn-outline-primary" type="button" (click)="buscarCEP()">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            <div *ngIf="form.get('cep')?.invalid && (form.get('cep')?.dirty || form.get('cep')?.touched)"
+                                class="invalid-feedback">
+                                Formato de CEP inválido. O CEP deve conter exatamente 8 dígitos numéricos.
+                            </div>
+                            <div *ngIf="errorMessage  && searchAttempted " class="invalid-feedback">
+                                {{ errorMessage }}
+                            </div>
+                        <div class="text-info">Estado</div>
+                    <select type="text" class="form-control form-select" formControlName="uf" id="uf"
+                    placeholder="Selecione a sua unidade federativa"
+                    [class.is-invalid]="form.get('uf')?.invalid && (form.get('uf')?.dirty || form.get('uf')?.touched)"
+                    required>
+                    <option value="" selected>Selecione</option>
+                    <option *ngFor="let uf of ufs" [value]="uf">{{uf}}</option>
+                </select>
+                <div *ngIf="form.get('uf')?.invalid && (form.get('uf')?.dirty || form.get('uf')?.touched)"
+                    class="invalid-feedback">
+                </div>
+                </div>
+            <!-- Campo de Logradouro -->
+            <div class="group-input">
+                <div class="text-info">Logradouro</div>                
+                <input type="text" class="form-control" formControlName="logradouro" id="logradouro"
+                placeholder="Digite aqui o nome do logradouro."
+                [class.is-invalid]="form.get('logradouro')?.invalid && (form.get('logradouro')?.dirty || form.get('logradouro')?.touched)"
+                required>
+            <div *ngIf="form.get('logradouro')?.invalid && (form.get('logradouro')?.dirty || form.get('logradouro')?.touched)"
+                class="invalid-feedback">
+            </div>             
+        </div>
+            <!-- Campo de Numero -->
+            <div class="group-input">
+                <div class="text-info">Numero</div>                
+                <input type="text" class="form-control" formControlName="numero" id="numero"
+                        placeholder="Digite aqui o número do endereço."
+                        [class.is-invalid]="form.get('numero')?.invalid && (form.get('numero')?.dirty || form.get('numero')?.touched)"
+                        required>
+                    <div *ngIf="form.get('numero')?.invalid && (form.get('numero')?.dirty || form.get('numero')?.touched)"
+                        class="invalid-feedback">
+                    </div>    
+        </div>
+        <!-- Campo de Cidade -->
+        <div class="group-input">
+            <div class="text-info">Cidade</div>                
+            <input type="text" class="form-control" formControlName="cidade" id="cidade"
+                        placeholder="Digite aqui o nome da cidade."
+                        [class.is-invalid]="form.get('cidade')?.invalid && (form.get('cidade')?.dirty || form.get('cidade')?.touched)"
+                        required>
+                    <div *ngIf="form.get('localidade')?.invalid && (form.get('cidade')?.dirty || form.get('cidade')?.touched)"
+                        class="invalid-feedback">
+                    </div> 
+    </div>
+    <!-- Campo de Bairro -->
+    <div class="group-input">
+        <div class="text-info">Bairro</div>                
+        <input type="text" class="form-control" formControlName="bairro" id="bairro"
+        placeholder="Digite aqui o nome do bairro."
+        [class.is-invalid]="form.get('bairro')?.invalid && (form.get('bairro')?.dirty || form.get('bairro')?.touched)"
+        required>
+    <div *ngIf="form.get('bairro')?.invalid && (form.get('bairro')?.dirty || form.get('bairro')?.touched)"
+        class="invalid-feedback">
+    </div>
+</div>
+<!-- Campo de Complemento -->
+<div class="group-input">
+    <div class="text-info">Complemento</div>                
+    <div class="input-group">
+        <input type="text" class="form-control" formControlName="complemento" id="complemento"
+        placeholder="Digite aqui o complemento do endereço.">
+</div>
+</div>
+<!-- Campo do Modal-->
+<div class="modal fade" #policiesModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Termos e diretrizes</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bem-vindo ao Coinnecta! Ao criar uma conta conosco, você está se comprometendo a aderir aos nossos termos e diretrizes para garantir a preservação da segurança, transparência e conformidade com as normas regulatórias financeiras. Estamos construindo, em parceria, uma comunidade financeira sólida e responsável, e convidamos você a se juntar a nós nessa jornada para estabelecer uma base confiável e ética no âmbito financeiro.
+
+Compromisso com Nossos Termos e Diretrizes:
+Ao criar uma conta no Coinnecta, você expressa seu compromisso em seguir rigorosamente nossos termos e diretrizes estabelecidos. Essas normas visam promover a integridade e a confiabilidade em todas as interações dentro de nossa plataforma.
+
+Preservação da Segurança:
+Comprometemo-nos a manter a segurança dos seus dados e transações. Solicitamos que você também faça a sua parte, adotando práticas seguras, como proteger suas credenciais de acesso e relatar qualquer atividade suspeita.
+
+Transparência:
+Valorizamos a transparência em todas as nossas operações. Informações claras e acessíveis são essenciais para uma comunidade financeira saudável. Estamos empenhados em fornecer dados precisos e relevantes para que você possa tomar decisões informadas.
+
+Conformidade com Normas Regulatórias:
+Para garantir a legitimidade e conformidade com as leis financeiras, é imperativo que todos os usuários do Coinnecta sigam as normas regulatórias aplicáveis. Não toleramos atividades que violem essas leis e regulamentações.
+
+Comunidade Financeira Sólida e Responsável:
+Ao se tornar parte do Coinnecta, você contribui para a construção de uma comunidade financeira sólida e responsável. Encorajamos a colaboração e a troca de conhecimento para o benefício de todos os membros.
+
+Jornada pela Base Confiável e Ética:
+Estamos comprometidos em estabelecer uma base financeira confiável e ética. Sua participação ativa e respeitosa é fundamental para o sucesso desta jornada. Juntos, moldaremos um ambiente financeiro mais confiável e ético para todos.
+
+Ao concordar com estes termos, você se une a nós na construção de uma plataforma financeira que promove a integridade, a segurança e a responsabilidade. O Coinnecta agradece a sua adesão e está ansioso para uma parceria bem-sucedida. Se tiver dúvidas ou preocupações, entre em contato com nossa equipe de suporte.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="custom-btn" data-bs-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" value="" id="validCheck" formControlName="policies"
+        [class.is-invalid]="form.get('policies')?.invalid && (form.get('policies')?.dirty || form.get('policies')?.touched)"
+        required>
+    <label class="form-check-label">
+        <a class="policies-color-link" (click)="openPoliciesModal()">Concordo com as diretrizes</a>
+    </label>
+    <div *ngIf="form.get('policies')?.invalid && (form.get('policies')?.dirty || form.get('policies')?.touched)"
+        class="invalid-feedback">
+        Você deve aceitar as diretrizes para continuar.
+    </div>
+</div>
+<div class="group-input">
+    <button type="submit" class="register-button" (click)="goBackClicked()">Voltar</button>
+</div>
+<div class="group-input">
+    <button type="submit" class="register-button" [disabled]="form.invalid">Coinnecte-se</button>
+</div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>

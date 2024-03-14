@@ -33,17 +33,29 @@
                             *ngIf="(registerForm.get('sobrenome')?.errors?.['required']) && registerForm.get('sobrenome')?.touched"
                             class="error-input">Campo obrigatório</label>
                     </div>
-                    <!-- Campo de CPF -->
-                    <div class="group-input">
-                        <div class="text-info">CPF*</div>
-                        <input type="text" formControlName="cpf" [(ngModel)]="cadastroObj.cpf "
-                            placeholder="Digite seu CPF" class="input-form" formControlName="cpf" minlength="11"
-                            maxlength="11" required="">
-                        <label
-                            *ngIf="(registerForm.get('cpf')?.errors?.['required'] || registerForm.get('cpf')?.errors?.['pattern']) && registerForm.get('cpf')?.touched"
-                            class="error-input">O CPF deve conter 11 dígitos numéricos</label>
 
+                    <div class="group-input">
+                        <div class="text-info">Tipo de Pessoa*</div>
+                        <select formControlName="tipoPessoa" class="input-form" required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="Fisica">Física</option>
+                            <option value="Juridica">Jurídica</option>
+                        </select>
+                        <label *ngIf="registerForm.get('tipoPessoa')?.invalid && registerForm.get('tipoPessoa')?.touched" class="error-input">Campo obrigatório</label>
                     </div>
+
+                    <div class="group-input" *ngIf="registerForm.get('tipoPessoa')?.value === 'Fisica'">
+                        <div class="text-info">CPF*</div>
+                        <input type="text" formControlName="cpf" placeholder="Digite seu CPF" class="input-form" required>
+                        <label *ngIf="registerForm.get('cpf')?.invalid && registerForm.get('cpf')?.touched" class="error-input">O CPF deve conter 11 dígitos numéricos</label>
+                    </div>
+
+                    <div class="group-input" *ngIf="registerForm.get('tipoPessoa')?.value === 'Juridica'">
+                        <div class="text-info">CNPJ*</div>
+                        <input type="text" formControlName="cnpj" placeholder="Digite seu CNPJ" class="input-form" required>
+                        <label *ngIf="registerForm.get('cnpj')?.invalid && registerForm.get('cnpj')?.touched" class="error-input">O CNPJ deve conter 14 dígitos numéricos</label>
+                    </div>
+
 
                     <!-- Campo de Senha -->
                     <div class="group-input">
@@ -87,4 +99,3 @@
     </div>
 
 </div>
-<app-footer></app-footer>
