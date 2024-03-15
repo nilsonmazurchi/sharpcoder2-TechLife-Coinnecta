@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LocalStorageService } from '../../servico/local-storage.service';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BancoDeDadosService } from '../../servico/bcodados.service';
 import { FormService } from '../../servico/form.service';
 import { Subscription } from 'rxjs';
 import { checarNome } from '../../validacoes/chegarNome';
@@ -12,7 +12,7 @@ import { checarAniversario } from '../../validacoes/checarAniversario';
 import { chegarSenha } from '../../validacoes/checarSenha';
 import { checarConfirmacaoSenha } from '../../validacoes/chegarConfirmacaoSenha';
 import { checarRegrasSenha } from '../../validacoes/chegarRegrasSenha';
-import { checarSeUsuarioExite } from '../../validacoes/checarSeUsuarioExiste';
+import { checarSeUsuarioExiste } from '../../validacoes/checarSeUsuarioExiste';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -27,7 +27,7 @@ import { of } from 'rxjs';
   styleUrl: './cadastroLoginSenha.component.css'
 })
 export class CadastroLoginSenhaComponent implements OnInit {
-  constructor(private fb: FormBuilder, private localStorageService: LocalStorageService, private formService: FormService, private router: Router, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private bcoDados: BancoDeDadosService, private formService: FormService, private router: Router, private http: HttpClient) { }
   form!: FormGroup;
   errorMessage: string | null = '';
   formSubscription: Subscription | undefined;
@@ -61,6 +61,7 @@ export class CadastroLoginSenhaComponent implements OnInit {
             // Lógica adicional após o sucesso do salvamento, se necessário
           }
         );
+        this.formCompleted.emit();
     }
   }
   
@@ -69,14 +70,14 @@ export class CadastroLoginSenhaComponent implements OnInit {
       nome: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100), checarNome()]),
       ddd: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]),
       telefone: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9), checarTelefone()]),
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email ]),
       tipoPessoa: ['', Validators.required],
       cpf: ['', Validators.required], 
       cnpj: ['', Validators.required], 
       diaNascimento: new FormControl('', [Validators.required, checarAniversario()]),
       senha: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6), chegarSenha()]),
       confirmacaoSenha: new FormControl('', [Validators.required]),
-    }, { validators: [checarConfirmacaoSenha(), checarRegrasSenha(), checarSeUsuarioExite(this.localStorageService)] });
+    }, { validators: [checarConfirmacaoSenha(), checarRegrasSenha(), checarSeUsuarioExiste(this.bcoDados)] });
 
     this.form.get('tipoPessoa')?.valueChanges.subscribe(value => {
       if (value === 'Fisica') {
@@ -98,16 +99,11 @@ export class CadastroLoginSenhaComponent implements OnInit {
         this.form.patchValue(data);
       }
     });
-    console.log('Conteúdo do localStorage:', localStorage.getItem('users'));
 
   }
 
   redirectHome() {
     this.router.navigateByUrl('/home');
-  }
-
-  apagarLocalStorege(): void{
-    this.localStorageService.clearLocalStorage();
   }
 
 }
