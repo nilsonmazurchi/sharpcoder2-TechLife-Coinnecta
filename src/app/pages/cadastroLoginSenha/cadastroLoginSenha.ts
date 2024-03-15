@@ -14,6 +14,9 @@ import { checarConfirmacaoSenha } from '../../validacoes/chegarConfirmacaoSenha'
 import { checarRegrasSenha } from '../../validacoes/chegarRegrasSenha';
 import { checarSeUsuarioExite } from '../../validacoes/checarSeUsuarioExiste';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 
 @Component({
@@ -24,7 +27,7 @@ import { Router } from '@angular/router';
   styleUrl: './cadastroLoginSenha.component.css'
 })
 export class CadastroLoginSenhaComponent implements OnInit {
-  constructor(private fb: FormBuilder, private localStorageService: LocalStorageService, private formService: FormService, private router: Router) { }
+  constructor(private fb: FormBuilder, private localStorageService: LocalStorageService, private formService: FormService, private router: Router, private http: HttpClient) { }
   form!: FormGroup;
   errorMessage: string | null = '';
   formSubscription: Subscription | undefined;
@@ -42,7 +45,22 @@ export class CadastroLoginSenhaComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-        this.formCompleted.emit();    
+      const formData = this.form.value;
+      console.log(formData);
+  
+      this.http.post('http://localhost:5197/usuarios', formData)
+        .pipe(
+          catchError(error => {
+            console.error('Erro ao salvar os dados no backend:', error);
+            return of(error); // Retorna um novo observable contendo o erro
+          })
+        )
+        .subscribe(
+          response => {
+            console.log('Dados salvos com sucesso no backend:', response);
+            // Lógica adicional após o sucesso do salvamento, se necessário
+          }
+        );
     }
   }
   

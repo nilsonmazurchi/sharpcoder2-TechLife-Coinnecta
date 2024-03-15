@@ -14,6 +14,9 @@ export class usuarioCadastrado {
     pontoRef: string;
     uf: string;
     numero: number;
+    bairro: string;
+    cidade: string;
+
   };
   senha: string;
   tipoPessoa: tipoPessoa;
@@ -33,6 +36,8 @@ export class usuarioCadastrado {
       pontoRef: string;
       uf: string;
       numero: number;
+      bairro: string;
+      cidade: string;
     },
     senha: string,
     tipoPessoa: tipoPessoa
