@@ -60,23 +60,24 @@
                     </div>                  
         </div>
             <!-- Campo de Email -->
-            <div class="group-input">
-                <div class="text-info">Email</div>                
-                <input type="email" id="email" formControlName="email" class="form-control"
-                placeholder="Digite seu email"
-                [class.is-invalid]="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) ||form.errors?.['emailUsuarioExiste']"
-                required>
-            <span *ngIf="form.errors?.['emailUsuarioExiste']" class="text-danger">Email já cadastrado.</span>
-            <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) ||form.errors?.['emailExists']"
-                class="invalid-feedback">
-                <div *ngIf="form.get('email')?.errors?.['required']">
-                    Informe seu email.
-                </div>
-                <div *ngIf="form.get('email')?.errors?.['email']">
-                    Informe um endereço de email válido.
-                </div>
-            </div>             
+<div class="group-input">
+    <div class="text-info">Email</div>                
+    <input type="email" id="email" formControlName="email" class="form-control"
+        placeholder="Digite seu email"
+        [class.is-invalid]="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) || form.get('email')?.errors?.['emailUsuarioExiste']"
+        required>
+        <span *ngIf="form.errors?.['emailUsuarioExiste']" class="text-danger">Email já cadastrado.</span>
+    <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) || form.get('email')?.errors?.['emailExists']"
+        class="invalid-feedback">
+        <div *ngIf="form.get('email')?.errors?.['required']">
+            Informe seu email.
         </div>
+        <div *ngIf="form.get('email')?.errors?.['email']">
+            Informe um endereço de email válido.
+        </div>
+    </div> 
+    <div class="error-message">{{ form.get('email')?.errors?.['emailUsuarioExiste'] | json }}</div>      
+</div>
 
         <div class="group-input">
             <div class="text-info">Tipo de Pessoa</div>
@@ -193,9 +194,6 @@
     <button type="button" class="return-button" (click)="redirectHome()">Voltar</button>
 </div>
 
-<div class="group-input">
-    <button type="button" class="clear-localStorage-button" (click)="apagarLocalStorege()">Limpar LocalStorage</button>
-</div>
                 </form>
             </div>
         </div>
