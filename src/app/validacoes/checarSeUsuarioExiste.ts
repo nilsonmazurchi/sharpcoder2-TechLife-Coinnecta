@@ -1,25 +1,23 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { LocalStorageService } from '../servico/local-storage.service';
+import { AbstractControl, ValidationErrors, AsyncValidatorFn } from '@angular/forms';
+import { Observable, combineLatest, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { BancoDeDadosService } from '../servico/bcodados.service';
 
-
-export function checarSeUsuarioExite(localStorageService: LocalStorageService): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
+export function checarSeUsuarioExiste(bancoDeDadosService: BancoDeDadosService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
         const email = control.get('email')?.value;
-        const cpf = control.get('cpf')?.value;
+        console.log(email)
 
-        if (!email && !cpf) {
-            return null;
+        if (!email) {
+            return of(); // Retorna um observable vazio se nenhum campo estiver preenchido
         }
-
-        const existeEmail = email ? localStorageService.checarEmailUsuarioExiste(email) : false;
-        if (existeEmail) {
-            return { emailUsuarioExiste: true };
-        }
-        const existeCPF = cpf ? localStorageService.checarCPFUsuarioExiste(cpf) : false;
-        if (existeCPF) {
-            return { cpfUsuarioExiste: true };
-        }
-
-        return null;
-    };
+        console.log("parei aqui")
+        return bancoDeDadosService.checarEmailUsuarioExiste(email).pipe(
+            map(existe => (existe ? { emailUsuarioExiste: true } : {emailUsuarioExiste: false})),
+            catchError(error => {
+                console.error('Erro ao verificar se o usuário existe:', error);
+                return of(null); // Lidar com o erro retornando null
+            })
+        );
+};
 }

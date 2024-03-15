@@ -118,3 +118,6 @@
 .group-input.telefone-group .form-select {
     width: 48%; /* Ajuste conforme necessário para o layout desejado */
 }
+.error-message {
+    color: black; /* ou qualquer outra cor escura desejada */
+}

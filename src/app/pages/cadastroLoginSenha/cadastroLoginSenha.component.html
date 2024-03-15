@@ -60,25 +60,36 @@
                     </div>                  
         </div>
             <!-- Campo de Email -->
-            <div class="group-input">
-                <div class="text-info">Email</div>                
-                <input type="email" id="email" formControlName="email" class="form-control"
-                placeholder="Digite seu email"
-                [class.is-invalid]="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) ||form.errors?.['emailUsuarioExiste']"
-                required>
-            <span *ngIf="form.errors?.['emailUsuarioExiste']" class="text-danger">Email já cadastrado.</span>
-            <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) ||form.errors?.['emailExists']"
-                class="invalid-feedback">
-                <div *ngIf="form.get('email')?.errors?.['required']">
-                    Informe seu email.
-                </div>
-                <div *ngIf="form.get('email')?.errors?.['email']">
-                    Informe um endereço de email válido.
-                </div>
-            </div>             
+<div class="group-input">
+    <div class="text-info">Email</div>                
+    <input type="email" id="email" formControlName="email" class="form-control"
+        placeholder="Digite seu email"
+        [class.is-invalid]="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) || form.get('email')?.errors?.['emailUsuarioExiste']"
+        required>
+        <span *ngIf="form.errors?.['emailUsuarioExiste']" class="text-danger">Email já cadastrado.</span>
+    <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) || form.get('email')?.errors?.['emailExists']"
+        class="invalid-feedback">
+        <div *ngIf="form.get('email')?.errors?.['required']">
+            Informe seu email.
         </div>
-        <!-- Campo de CPF -->
+        <div *ngIf="form.get('email')?.errors?.['email']">
+            Informe um endereço de email válido.
+        </div>
+    </div> 
+    <div class="error-message">{{ form.get('email')?.errors?.['emailUsuarioExiste'] | json }}</div>      
+</div>
+
         <div class="group-input">
+            <div class="text-info">Tipo de Pessoa</div>
+            <select class="form-select" formControlName="tipoPessoa" required>
+                <option value="Fisica">Pessoa Física</option>
+                <option value="Juridica">Pessoa Jurídica</option>
+            </select>
+        </div>
+
+
+        <!-- Campo de CPF -->
+        <div class="group-input" *ngIf="form.get('tipoPessoa')?.value === 'Fisica'">
             <div class="text-info">CPF</div>                
             <input type="text" class="form-control" id="cpf" formControlName="cpf" aria-describedby="cpf"
                         placeholder="Digite seu CPF"
@@ -97,6 +108,25 @@
                     </div>
                      
     </div>
+
+    <div class="group-input" *ngIf="form.get('tipoPessoa')?.value === 'Juridica'">
+        <div class="text-info">CNPJ</div>
+        <input type="text" class="form-control" id="cnpj" formControlName="cnpj" placeholder="Digite seu CNPJ"
+            [class.is-invalid]="form.get('cnpj')?.invalid && (form.get('cnpj')?.dirty || form.get('cnpj')?.touched)"
+            required>
+            <span *ngIf="form.errors?.['cnpjUsuarioExiste']" class="text-danger">CNPJ já cadastrado.</span>
+
+            <div *ngIf="form.get('cnpj')?.invalid && (form.get('cnpj')?.dirty || form.get('cnpj')?.touched)"
+                class="invalid-feedback">
+                <span *ngIf="form.get('cnpj')?.errors?.['cnpjInvalido'] === 'todoDigitoIgual'">Todos os dígitos do
+                    CNPJ não podem ser iguais.</span>
+                <span *ngIf="form.get('cnpj')?.errors?.['cnpjInvalido'] === 'tamanhoInvalido'">O CNPJ deve conter
+                    exatamente 14 dígitos.</span>
+                    <span *ngIf="form.get('cnpj')?.errors?.['cnpjInvalido'] === 'naoNumero'">O CNPJ só pode conter números</span>
+                <span *ngIf="form.get('cnpj')?.errors?.['cnpjInvalido'] === true">CNPJ inválido.</span>
+        </div>
+        </div>
+
     <!-- Campo de Data de Nascimento -->
     <div class="group-input">
         <div class="text-info">Data de Nascimento</div>                
@@ -164,9 +194,6 @@
     <button type="button" class="return-button" (click)="redirectHome()">Voltar</button>
 </div>
 
-<!-- <div class="group-input">
-    <button type="button" class="clear-localStorage-button" (click)="apagarLocalStorege()">Limpar LocalStorage</button>
-</div> -->
                 </form>
             </div>
         </div>

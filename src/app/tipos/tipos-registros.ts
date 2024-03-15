@@ -4,6 +4,7 @@ export type registrosTipos = {
     telefone: string;
     email: string;
     cpf: string;
+    cnpj: string;
     diaAniversario: string;
     senha: number;
     confirmSenha: number;

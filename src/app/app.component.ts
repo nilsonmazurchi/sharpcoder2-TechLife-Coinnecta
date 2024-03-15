@@ -4,6 +4,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { RouterOutlet } from '@angular/router';
 import {RouterLink} from "@angular/router";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {RouterLink} from "@angular/router";
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [CommonModule, RouterOutlet, LoginComponent, CadastroComponent, RouterLink]
+  imports: [CommonModule, RouterOutlet, LoginComponent, ReactiveFormsModule, CadastroComponent, RouterLink]
 })
 export class AppComponent {
   title = 'sharpcoder2-TechLife-Coinnecta';

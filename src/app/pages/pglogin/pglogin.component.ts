@@ -143,8 +143,13 @@ export class PgloginComponent {
   isPasswordCorrect() {
     let isCorrect = true;
     let cpfDigitado = this.form.get('cpf')?.value;
-    let correctPassword = this.localStorageService.getSenha(cpfDigitado);
-    console.log(typeof(correctPassword));
+    let cnpjDigitado = this.form.get('cnpj')?.value;
+    let correctPassword = "";
+    if(cpfDigitado){
+      correctPassword = this.localStorageService.getSenha(cpfDigitado);
+    } else if (cnpjDigitado){
+      correctPassword = this.localStorageService.getSenhaCNPJ(cnpjDigitado);
+    }
   
     for (let i = 0; i < 6; i++) {
       const pair = this.passwordInsert[i];
@@ -155,10 +160,15 @@ export class PgloginComponent {
         break;
       }
     }
-    console.log("estou aqui")
-    console.log(isCorrect)
     if (isCorrect) {
-          var usuarioLogado = { nome: this.localStorageService.getNome(cpfDigitado), cpf: cpfDigitado };
+          let usuarioLogado: { nome: string, cpf?: string, cnpj?:string}
+          if(cpfDigitado){
+            usuarioLogado = { nome: this.localStorageService.getNome(cpfDigitado), cpf: cpfDigitado }
+          } else if(cnpjDigitado){
+            usuarioLogado = { nome: this.localStorageService.getNome(cnpjDigitado), cnpj: cnpjDigitado }
+          } else{
+            throw new Error('CPF ou CNPJ não fornecido')
+          }      
           this.localStorageService.salvarUsuarioLogadoLocalStorage(usuarioLogado);
           console.log('Conteúdo do localStorage:', localStorage.getItem('usuariosLogado'));
           this.AuthService.login();
