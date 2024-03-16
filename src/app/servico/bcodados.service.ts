@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { throwError, catchError } from 'rxjs'; 
 
 
 @Injectable({
@@ -31,13 +31,8 @@ export class BancoDeDadosService {
   }
 
   checarEmailUsuarioExiste(email: string): Observable<boolean> {
-    console.log('Verificando se o usuário existe para o email:', email);
-    return this.http.get<boolean>(`${this.baseUrl}/usuarios/checar-email?email=${email}`)
-        .pipe(
-            tap(existe => console.log('Usuário existe:', existe))
-        );
+    return this.http.get<boolean>(`${this.baseUrl}/usuarios/checar-email?email=${email}`);
 }
-
 
   checarCNPJUsuarioExiste(cnpj: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.baseUrl}/usuarios/checar-cnpj?cnpj=${cnpj}`);

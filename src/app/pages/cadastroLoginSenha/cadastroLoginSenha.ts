@@ -12,11 +12,13 @@ import { checarAniversario } from '../../validacoes/checarAniversario';
 import { chegarSenha } from '../../validacoes/checarSenha';
 import { checarConfirmacaoSenha } from '../../validacoes/chegarConfirmacaoSenha';
 import { checarRegrasSenha } from '../../validacoes/chegarRegrasSenha';
-import { checarSeUsuarioExiste } from '../../validacoes/checarSeUsuarioExiste';
+import { checarSeUsuarioExiste, extrairResultadoObservable } from '../../validacoes/checarSeUsuarioExiste';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { of, from } from 'rxjs';
+import { Observable } from 'rxjs';
+import { ValidationErrors } from '@angular/forms';
 
 
 @Component({
@@ -64,7 +66,42 @@ export class CadastroLoginSenhaComponent implements OnInit {
         this.formCompleted.emit();
     }
   }
+
+  checarSeUsuarioExistePgCadastro(control: AbstractControl): Observable<ValidationErrors | null> {
+    console.log("Antes Daqui")
+    const validationObservable = checarSeUsuarioExiste(this.bcoDados)(control);
+    const resultado = extrairResultadoObservable(validationObservable)
+    console.log(resultado)
+    resultado.then(resultado => {
+      if (resultado) {
+          console.log('Resultado final:', resultado);
   
+          const cnpjUsuarioExiste = resultado['cnpjUsuarioExiste'];
+          const cpfUsuarioExiste = resultado['cpfUsuarioExiste'];
+          const emailUsuarioExiste = resultado['emailUsuarioExiste'];
+  
+          console.log('cnpjUsuarioExiste:', cnpjUsuarioExiste);
+          console.log('cpfUsuarioExiste:', cpfUsuarioExiste);
+          console.log('emailUsuarioExiste:', emailUsuarioExiste);
+
+          if (cnpjUsuarioExiste) {
+            control.get('cnpj')?.setErrors({ 'cnpjUsuarioExiste': true });
+        }
+        if (cpfUsuarioExiste) {
+            control.get('cpf')?.setErrors({ 'cpfUsuarioExiste': true });
+        }
+        if (emailUsuarioExiste) {
+            control.get('email')?.setErrors({ 'emailUsuarioExiste': true });
+        }
+      } 
+      }).catch(error => {
+      console.error('Ocorreu um erro:', error);
+      });
+        return of(null);
+      
+  }
+
+
   ngOnInit() {
     this.form = this.fb.group({
       nome: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100), checarNome()]),
@@ -77,7 +114,15 @@ export class CadastroLoginSenhaComponent implements OnInit {
       diaNascimento: new FormControl('', [Validators.required, checarAniversario()]),
       senha: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6), chegarSenha()]),
       confirmacaoSenha: new FormControl('', [Validators.required]),
-    }, { validators: [checarConfirmacaoSenha(), checarRegrasSenha(), checarSeUsuarioExiste(this.bcoDados)] });
+    }, { validators: [checarConfirmacaoSenha(), checarRegrasSenha(), this.checarSeUsuarioExistePgCadastro.bind(this)],
+      // asyncValidators: [checarSeUsuarioExiste(this.bcoDados)],
+      // updateOn: 'blur'
+    });
+    
+    this.form.get('email')?.valueChanges.subscribe(value => {
+      console.log('Valor do campo E-mail mudou para:', value);
+      this.checarSeUsuarioExistePgCadastro(this.form.get('email')!);
+    });
 
     this.form.get('tipoPessoa')?.valueChanges.subscribe(value => {
       if (value === 'Fisica') {
