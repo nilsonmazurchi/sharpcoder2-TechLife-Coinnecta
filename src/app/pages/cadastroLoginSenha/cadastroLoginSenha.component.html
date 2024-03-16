@@ -66,7 +66,7 @@
         placeholder="Digite seu email"
         [class.is-invalid]="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) || form.get('email')?.errors?.['emailUsuarioExiste']"
         required>
-        <span *ngIf="form.errors?.['emailUsuarioExiste']" class="text-danger">Email já cadastrado.</span>
+        <span *ngIf="form.get('email')?.errors?.['emailUsuarioExiste']" class="text-danger">Email já cadastrado.</span>
     <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) || form.get('email')?.errors?.['emailExists']"
         class="invalid-feedback">
         <div *ngIf="form.get('email')?.errors?.['required']">
@@ -76,7 +76,7 @@
             Informe um endereço de email válido.
         </div>
     </div> 
-    <div class="error-message">{{ form.get('email')?.errors?.['emailUsuarioExiste'] | json }}</div>      
+    <!-- <div class="error-message">{{ form.get('email')?.errors?.['emailUsuarioExiste'] | json }}</div>       -->
 </div>
 
         <div class="group-input">
@@ -95,7 +95,7 @@
                         placeholder="Digite seu CPF"
                         [class.is-invalid]="form.get('cpf')?.invalid && (form.get('cpf')?.dirty || form.get('cpf')?.touched) ||form.errors?.['cpfUsuarioExiste']"
                         required>
-                    <span *ngIf="form.errors?.['cpfUsuarioExiste']" class="text-danger">CPF já cadastrado.</span>
+                    <span *ngIf="form.get('cpf')?.errors?.['cpfUsuarioExiste']" class="text-danger">CPF já cadastrado.</span>
 
                     <div *ngIf="form.get('cpf')?.invalid && (form.get('cpf')?.dirty || form.get('cpf')?.touched)"
                         class="invalid-feedback">
@@ -114,7 +114,7 @@
         <input type="text" class="form-control" id="cnpj" formControlName="cnpj" placeholder="Digite seu CNPJ"
             [class.is-invalid]="form.get('cnpj')?.invalid && (form.get('cnpj')?.dirty || form.get('cnpj')?.touched)"
             required>
-            <span *ngIf="form.errors?.['cnpjUsuarioExiste']" class="text-danger">CNPJ já cadastrado.</span>
+            <span *ngIf="form.get('cnpj')?.errors?.['cnpjUsuarioExiste']" class="text-danger">CNPJ já cadastrado.</span>
 
             <div *ngIf="form.get('cnpj')?.invalid && (form.get('cnpj')?.dirty || form.get('cnpj')?.touched)"
                 class="invalid-feedback">
