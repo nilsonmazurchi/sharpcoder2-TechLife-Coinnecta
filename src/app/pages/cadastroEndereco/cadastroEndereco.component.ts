@@ -7,8 +7,10 @@ import { buscarCepService } from '../../servico/buscar-cep.service';
 import { LocalStorageService } from '../../servico/local-storage.service';
 import * as bootstrap from 'bootstrap';
 import { Router } from '@angular/router';
-import { Subscription, take } from 'rxjs';
+import { Subscription, catchError, take, throwError } from 'rxjs';
 import { FormService } from '../../servico/form.service';
+import { HttpClient } from '@angular/common/http';
+import { BancoDeDadosService } from '../../servico/bcodados.service';
 
 @Component({
   selector: 'app-cadastroEndereco',
@@ -21,11 +23,9 @@ export class CadastroEnderecoComponent {
   formSubscription: Subscription | undefined;
 
 
-  constructor(private formBuilder: FormBuilder, private cepService: buscarCepService, private cdr: ChangeDetectorRef, private localStorageService: LocalStorageService, private router: Router, private formService: FormService) {
+  constructor(private bancoDeDadosService: BancoDeDadosService, private http: HttpClient, private formBuilder: FormBuilder, private cepService: buscarCepService, private cdr: ChangeDetectorRef, private localStorageService: LocalStorageService, private router: Router, private formService: FormService) {
 
   }
-
-
 
   ufs: string[] = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
   private modalOpened = false;
@@ -57,23 +57,18 @@ export class CadastroEnderecoComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      const formValues: cadastroLoginSenhaTipo = this.form.value;
-      const cleanValues = this.trimFormValues(formValues);
-
-      this.formService.getFormData().pipe(take(1)).subscribe(data => {
-
-        const completeUser = { ...data, ...cleanValues };
-
-        const userExists = this.localStorageService.checarEmailUsuarioExiste(completeUser.email) || this.localStorageService.checarCPFUsuarioExiste(completeUser.cpf);
-        if (!userExists) {
-          this.localStorageService.salvarUsuarioLocalStorage(completeUser);
-          this.formCompleted.emit();
-          this.form.reset();
-        } else {
-
-          console.error('Usuário já existe.');
+      const endereco = this.form.value;
+      this.bancoDeDadosService.cadastroDeEndereco(endereco).subscribe(
+        response => {
+          console.log('Dados enviados com sucesso:', response);
+        },
+        error => {
+          console.error('Erro ao enviar os dados:', error);
         }
-      });
+      );
+
+      this.formCompleted.emit();
+      this.form.reset();
       this.formService.clearFormData();
 
     }
