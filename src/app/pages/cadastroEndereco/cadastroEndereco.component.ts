@@ -67,23 +67,8 @@ export class CadastroEnderecoComponent {
         }
       );
 
-      const formValues: cadastroLoginSenhaTipo = this.form.value;
-      const cleanValues = this.trimFormValues(formValues);
-
-      this.formService.getFormData().pipe(take(1)).subscribe(data => {
-
-        const completeUser = { ...data, ...cleanValues };
-
-        const userExists = this.localStorageService.checarEmailUsuarioExiste(completeUser.email) || this.localStorageService.checarCPFUsuarioExiste(completeUser.cpf);
-        if (!userExists) {
-          this.localStorageService.salvarUsuarioLocalStorage(completeUser);
-          this.formCompleted.emit();
-          this.form.reset();
-        } else {
-
-          console.error('Usuário já existe.');
-        }
-      });
+      this.formCompleted.emit();
+      this.form.reset();
       this.formService.clearFormData();
 
     }
