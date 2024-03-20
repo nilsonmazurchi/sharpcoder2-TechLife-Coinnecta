@@ -41,4 +41,9 @@ export class BancoDeDadosService {
   checarCPFUsuarioExiste(cpf: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.baseUrl}/usuarios/checar-cpf?cpf=${cpf}`);
   }
+
+  //Endereco
+  cadastroDeEndereco(endereco: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/enderecos`, endereco);
+  }
 }

@@ -143,10 +143,10 @@ Ao concordar com estes termos, você se une a nós na construção de uma plataf
     </div>
 </div>
 <div class="group-input">
-    <button type="submit" class="register-button" (click)="goBackClicked()">Voltar</button>
+    <button type="submit" class="register-button" [disabled]="form.invalid">Coinnecte-se</button>
 </div>
 <div class="group-input">
-    <button type="submit" class="register-button" [disabled]="form.invalid">Coinnecte-se</button>
+    <button type="submit" class="register-button" (click)="goBackClicked()">Voltar</button>
 </div>
                 </form>
             </div>
