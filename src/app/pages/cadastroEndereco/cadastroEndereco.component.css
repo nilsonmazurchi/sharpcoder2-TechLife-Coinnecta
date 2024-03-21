@@ -1,0 +1,121 @@
+/* Estilo para o formulário de cadastro */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #012B3F;
+}
+
+.text-info {
+    color: #E2DD74 !important;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    /* Centraliza a imagem */
+    width: 200px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.register-container-central {
+    max-width: 600px;
+    width: 80%;
+    padding: 20px;
+    padding-bottom: 0;
+    background-color: #012B3F;
+    overflow: hidden;
+}
+
+.register-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px;
+    color: white;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.group-input {
+    margin-bottom: 15px;
+}
+
+.group-input .text-info {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.group-input .input-form {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error-input {
+    color: red;
+    font-size: 10px;
+}
+
+.register-button {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.register-button:hover {
+    background-color: #000ece !important;
+    /* Azul mais escuro */
+}
+.register-button:hover:not(.disabled) {
+    background-color: #000ece;
+    /* Azul mais escuro */
+}
+.disabled {
+    opacity: 0.6;
+}
+.return-button {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+}
+.return-button:hover {
+    background-color: #E2DD74 !important;
+    color: black;
+    /* Azul mais escuro */
+}
+
+.group-input.cep-estado {
+    display: flex;
+    justify-content: space-between;
+}
+
+.group-input.cep-estado .text-info,
+.group-input.cep-estado .form-control,
+.group-input.cep-estado .form-select {
+    width: 48%; /* Ajuste conforme necessário para o layout desejado */
+}

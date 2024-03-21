@@ -1,0 +1,78 @@
+<div class="backgroud-container">
+    <div class="login-container">
+        <!-- Container central -->
+        <div class="login-container-central">
+            <!-- Cabeçalho -->
+            <img src="../../../assets/image/logo-sem_fundo.png" class="logo" alt="logo-sem_fundo"
+                (click)="redirectHome()">
+            <div class="login-container-header">
+                <div class="login-title">
+                    Bem-vindo(a) ao COINNECTA!
+                </div>
+                <div class="login-info">
+                    Coinnecta é a fintech que conecta você e suas finanças. Entre e aproveite!
+                </div>
+
+                <!-- Container dos cartões -->
+                <div class="card-container">
+                    <div class="card">
+                        <img src="../../../assets/image/foguete.png" class="card-image" alt="logo">
+                        <div class="card-text">Simples</div>
+                    </div>
+                    <div class="card">
+                        <img src="../../../assets/image/escudo.png" class="card-image" alt="logo">
+                        <div class="card-text">Seguro</div>
+                    </div>
+                    <div class="card">
+                        <img src="../../../assets/image/moedas.png" class="card-image" alt="logo">
+                        <div class="card-text">Acessível</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container do formulário -->
+            <div class="form-container">
+                <form class="form-inputs" [formGroup]="loginForm" (submit)="loginUser()">
+
+                    <!-- Campo de Email -->
+                    <div class="group-input">
+                        <div class="text-info">Email</div>
+                        <input type="email" formControlName="email" [(ngModel)]="loginObj.email"
+                            placeholder="Digite seu e-mail" class="input-form" formControlName="email" required="">
+                        <label
+                            *ngIf="(loginForm.get('email')?.errors?.['required'] || loginForm.get('email')?.errors?.['email']) && loginForm.get('email')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+                    <!-- Campo de Senha -->
+                    <div class="group-input">
+                        <div class="text-info">Senha</div>
+                        <input type="password" formControlName="senha" [(ngModel)]="loginObj.senha"
+                            placeholder="Digite sua senha" class="input-form" formControlName="senha" required="">
+                        <label *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched"
+                            class="error-input">Campo obrigatório</label>
+                    </div>
+
+                    <!-- Botão de Login -->
+                    <div class="group-input">
+                        <button type="submit" class="login-button" [ngClass]="{'disabled' : !loginForm.valid}"
+                            [disabled]="!loginForm.valid">Login</button>
+                    </div>
+
+                    <br><br>
+                    <!-- Link para cadastro -->
+                    <div class="text-criar-conta">
+                        Ainda não possui uma conta? Crie uma agora mesmo!
+                    </div>
+
+                    <!-- Botão para criar conta -->
+                    <button class="criarconta-button" (click)="goToRegister()">Abrir Conta</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<app-footer></app-footer>
