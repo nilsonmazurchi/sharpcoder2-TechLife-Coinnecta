@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { throwError, catchError } from 'rxjs'; 
+import { throwError, catchError } from 'rxjs';
 
 
 @Injectable({
@@ -32,7 +32,7 @@ export class BancoDeDadosService {
 
   checarEmailUsuarioExiste(email: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.baseUrl}/usuarios/checar-email?email=${email}`);
-}
+  }
 
   checarCNPJUsuarioExiste(cnpj: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.baseUrl}/usuarios/checar-cnpj?cnpj=${cnpj}`);
@@ -45,5 +45,24 @@ export class BancoDeDadosService {
   //Endereco
   cadastroDeEndereco(endereco: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/enderecos`, endereco);
+  }
+
+  //Conta
+  criarContaCorrente(usuarioId: number, dadosConta: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/contas/${usuarioId}`, dadosConta);
+  }
+  getSaldo(contaId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/contas/${contaId}`)
+  }
+
+  //Transacao
+  depositar(valor: number) {
+    return this.http.post<any>(`${this.baseUrl}/transacoes/deposito`, valor);
+  }
+  sacar(valor: number) {
+    return this.http.post<any>(`${this.baseUrl}/transacoes/saque`, valor);
+  }
+  tranferir(valor: number) {
+    return this.http.post<any>(`${this.baseUrl}/transacoes/transferecia`, valor);
   }
 }

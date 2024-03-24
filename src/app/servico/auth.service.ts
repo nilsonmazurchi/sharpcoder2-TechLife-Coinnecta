@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpResponse} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {Credencial} from "../modelos/Credencial";
-import {map, tap} from "rxjs/operators";
+import { HttpClient, HttpResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { Credencial } from "../modelos/Credencial";
+import { map, tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -57,7 +57,9 @@ export class AuthService {
   // }
 
   private token: string | null = null;
-
+  userId!: number;
+  userCpf!: string;
+  
   constructor(
     private http: HttpClient,
     private router: Router) { }
@@ -69,6 +71,8 @@ export class AuthService {
           return;
         }
         this.token = response.token;
+        this.userId = response.userId;
+        this.userCpf = response.userCpf;
         if (typeof this.token === "string") {
           localStorage.setItem('token', this.token);
         }

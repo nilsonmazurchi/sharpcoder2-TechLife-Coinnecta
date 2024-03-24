@@ -7,3 +7,12 @@ font-size: 2rem;
 font-weight: bold;
 
 }
+.saldo{
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+article{
+  margin: 30px !important;
+  margin-bottom: 10px !important;
+}

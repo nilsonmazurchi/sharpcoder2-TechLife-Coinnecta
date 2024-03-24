@@ -1,85 +1,62 @@
-
-<!-- Seu componente pai -->
-
-<section class="container">
-  <h2 class="text-center ">Histórico de Transações</h2>
-  <hr>
-  <div class="container-fluid row">
-    <div class="col-md-4 container-fluid">
-      <div class=" text-center custom-background"><strong>21 FEV</strong></div>
-      <br>
-      <app-transacao
-        [titulo]="'Pagamento Efetuado'"
-        [conta]="'Sefaz'"
-        [valor]=" 100.00"
-        [data]="'21/02/2024'">
-      </app-transacao>
-      <br>
-      <app-transacao
-        [titulo]="'Pix Enviado'"
-        [conta]="'Antonio Carlos Silva'"
-        [valor]="527.00"
-        [data]="'21/02/2024'">
-      </app-transacao>
-      <br>
-      <app-transacao
-        [titulo]="'Transferência Recebida'"
-        [conta]="'Ana Maria Jesus'"
-        [valor]="1000.00"
-        [data]="'21/02/2024'">
-      </app-transacao>
-      <br>
-    </div>
-    <div class="col-md-4 container-fluid">
-      <div class="text-center custom-background"><strong>22 FEV</strong></div>
-      <br>
-      <app-transacao
-        [titulo]="'Pagamento Efetuado'"
-        [conta]="'Solid Tech'"
-        [valor]="1500.00"
-        [data]="'22/02/2024'">
-      </app-transacao>
-      <br>
-      <app-transacao
-        [titulo]="'Pagamento Efetuado'"
-        [conta]="'Invest Certo'"
-        [valor]="2000.00"
-        [data]="'22/02/2024'">
-      </app-transacao>
-      <br>
-      <app-transacao
-        [titulo]="'Pagamento Efetuado'"
-        [conta]="'Atacado Central'"
-        [valor]="300.60"
-        [data]="'22/02/2024'">
-      </app-transacao>
-      <br>
-    </div>
-    <div class="col-md-4  container-fluid">
-      <div class="text-center custom-background"><strong>23 FEV</strong></div>
-      <br>
-      <app-transacao
-        [titulo]="'Pix Enviado'"
-        [conta]="'José Silva'"
-        [valor]="10.00"
-        [data]="'23/02/2024'">
-      </app-transacao>
-      <br>
-      <app-transacao
-        [titulo]="'Pagamento Efetuado'"
-        [conta]="'Sefaz'"
-        [valor]="100.00"
-        [data]="'23/02/2024'">
-      </app-transacao>
-      <br>
-      <app-transacao
-        [titulo]="'Tranferência Recebida'"
-        [conta]="'Carlos Antonio'"
-        [valor]="500.00"
-        [data]="'23/02/2024'">
-      </app-transacao>
-      <br>
-    </div>
+<section class="container" *ngIf="exibirConteudo">
+  <div class="container-button">
+    <button type="button" class="btn btn-success" (click)="openDepositModal()">Depósito</button>
+    <button type="button" class="btn btn-warning" (click)="openWithdrawModal()">Saque</button>
+    <button type="button" class="btn btn-primary" (click)="openTransferModal()">Transferencia</button>
   </div>
+  <body>
+  
+    <div class="container">
+      <h2><strong>Meu Histórico</strong></h2>
+      <form action="/search" method="get" class="search-form">
+        <input type="search" id="search" name="q" placeholder="Pesquisar...">
+      </form>
+  
+      <br>
+      <br>
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Descrição</th>
+            <th>Valor (R$)</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td>2024-03-21</td>
+            <td>Depósito em dinheiro</td>
+            <td>500.00</td>
+            <td>Crédito</td>
+          </tr>
+          <tr>
+            <td>2024-03-22</td>
+            <td>Compra no mercado</td>
+            <td>-50.00</td>
+            <td>Débito</td>
+          </tr>
+          <tr>
+            <td>2024-03-22</td>
+            <td>Compra no mercado</td>
+            <td>-50.00</td>
+            <td>Débito</td>
+          </tr>
+          <tr>
+            <td>2024-03-22</td>
+            <td>Compra no mercado</td>
+            <td>-50.00</td>
+            <td>Débito</td>
+          </tr>
+          <tr>
+            <td>2024-03-22</td>
+            <td>Compra no mercado</td>
+            <td>-50.00</td>
+            <td>Débito</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  
+  </body>
 </section>
-

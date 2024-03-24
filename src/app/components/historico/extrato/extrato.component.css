@@ -1,14 +1,93 @@
+.btn {
+    margin: 10px !important;
+    height: 100px !important;
+    width: 120px !important;
+    border-radius: 20px !important;
+}
+
+.container-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    margin-top: 0px;
+    padding: 20px;
+}
+
 .col-md-4 {
     border-right: 1px solid #ccc;
     padding-right: 15px;
 }
+
 .col-md-4:last-child {
     border-right: none;
 }
 
 .custom-background {
-    background-color: rgba(20, 53, 171, 0.3); 
-    padding: 10px; 
-    border-radius: 5px; 
-    color: #ffffff; 
+    background-color: rgba(20, 53, 171, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color:  rgba(1, 43, 63, 0.7); */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(20, 53, 171, 0.5);
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: rgba(20, 53, 171, 0.5);
+}
+
+.search-form {
+    position: relative;
+    display: inline-block;
+}
+
+.search-form input[type="search"] {
+    padding-right: 30px;
+    /* Espaço para acomodar o ícone (se necessário) */
+    border-radius: 20px;
+    /* Define a forma mais arredondada */
+    border: 1px solid #ccc;
+    /* Adiciona uma borda */
+    padding: 5px;
+    /* Espaçamento interno */
+    width: 200px;
+    /* Largura do campo de pesquisa */
+    box-sizing: border-box;
+    /* Garante que a largura inclua preenchimento e borda */
 }
