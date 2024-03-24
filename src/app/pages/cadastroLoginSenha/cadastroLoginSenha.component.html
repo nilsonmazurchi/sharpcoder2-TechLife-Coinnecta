@@ -18,8 +18,7 @@
                         <input type="text" formControlName="nome"
                             placeholder="Digite seu nome" class="input-form" formControlName="nome"  
                             [class.is-invalid]="form.get('nome')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)"
-                            required>
-                            <span *ngIf="form.get('nome')?.invalid" class="text-danger">Nome Invalido.</span>
+                            required>                           
                             <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)"
                             class="invalid-feedback">
                            
@@ -42,8 +41,7 @@
                     <div class="text-info">DDD</div>
                     <select class="form-select" size="1" formControlName="ddd" id="DDD"
                         [class.is-invalid]="form.get('ddd')?.invalid && (form.get('ddd')?.dirty || form.get('ddd')?.touched)"
-                        required>
-                        <span *ngIf="form.get('ddd')?.invalid" class="text-danger">DDD Invalido.</span>
+                        required>                        
                         <option value="" selected>Selecione</option>
                         <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
                     </select>
@@ -57,8 +55,7 @@
                     <input type="text" class="form-control" id="telefone" formControlName="telefone"
                         placeholder="Digite seu telefone"
                         [class.is-invalid]="form.get('telefone')?.invalid && (form.get('telefone')?.dirty || form.get('telefone')?.touched)"
-                        required>
-                        <span *ngIf="form.get('telefone')?.invalid" class="text-danger">Telefone Invalido.</span>
+                        required>                        
                     <div *ngIf="form.get('telefone')?.invalid && (form.get('telefone')?.dirty || form.get('telefone')?.touched)"
                         class="invalid-feedback">
                         <div *ngIf="form.get('telefone')?.errors?.['telefoneInvalido']">Número de telefone inválido.</div>
@@ -71,8 +68,7 @@
         placeholder="Digite seu email"
         [class.is-invalid]="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) || form.get('email')?.errors?.['emailUsuarioExiste']"
         required>
-        <span *ngIf="form.get('email')?.errors?.['emailUsuarioExiste']" class="text-danger">Email já cadastrado.</span>
-        <span *ngIf="form.get('email')?.invalid" class="text-danger">Email Invalido.</span>
+        <span *ngIf="form.get('email')?.errors?.['emailUsuarioExiste']" class="text-danger">Email já cadastrado.</span>        
     <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched) || form.get('email')?.errors?.['emailExists']"
         class="invalid-feedback">
         <div *ngIf="form.get('email')?.errors?.['required']">
@@ -90,8 +86,7 @@
             <select class="form-select" formControlName="tipoPessoa" required>
                 <option value="Fisica">Pessoa Física</option>
                 <option value="Juridica">Pessoa Jurídica</option>
-            </select>
-            <span *ngIf="form.get('tipoPessoa')?.invalid" class="text-danger">Nome Invalido.</span>
+            </select>            
         </div>
 
 
@@ -101,8 +96,7 @@
             <input type="text" class="form-control" id="cpf" formControlName="cpf" aria-describedby="cpf"
                         placeholder="Digite seu CPF"
                         [class.is-invalid]="form.get('cpf')?.invalid && (form.get('cpf')?.dirty || form.get('cpf')?.touched) ||form.errors?.['cpfUsuarioExiste']"
-                        required>
-                        <span *ngIf="form.get('cpf')?.invalid" class="text-danger">CPF Invalido.</span>
+                        required>                       
                     <span *ngIf="form.get('cpf')?.errors?.['cpfUsuarioExiste']" class="text-danger">CPF já cadastrado.</span>
 
                     <div *ngIf="form.get('cpf')?.invalid && (form.get('cpf')?.dirty || form.get('cpf')?.touched)"
@@ -121,10 +115,8 @@
         <div class="text-info">CNPJ</div>
         <input type="text" class="form-control" id="cnpj" formControlName="cnpj" placeholder="Digite seu CNPJ"
             [class.is-invalid]="form.get('cnpj')?.invalid && (form.get('cnpj')?.dirty || form.get('cnpj')?.touched)"
-            required>
-            
+            required>            
             <span *ngIf="form.get('cnpj')?.errors?.['cnpjUsuarioExiste']" class="text-danger">CNPJ já cadastrado.</span>
-
             <div *ngIf="form.get('cnpj')?.invalid && (form.get('cnpj')?.dirty || form.get('cnpj')?.touched)"
                 class="invalid-feedback">
                 <span *ngIf="form.get('cnpj')?.errors?.['cnpjInvalido'] === 'todoDigitoIgual'">Todos os dígitos do
@@ -141,8 +133,7 @@
         <div class="text-info">Data de Nascimento</div>                
         <input type="date" class="form-control" formControlName="diaNascimento" id="diaNascimento"
                         [class.is-invalid]="form.get('diaNascimento')?.invalid && (form.get('diaNascimento')?.dirty || form.get('diaNascimento')?.touched)"
-                        required>
-                        <span *ngIf="form.get('diaNascimento')?.invalid" class="text-danger">Nome Invalido.</span>
+                        required>                        
                     <div *ngIf="form.get('diaNascimento')?.invalid && (form.get('diaNascimento')?.dirty || form.get('diaNascimento')?.touched)"
                         class="invalid-feedback">
                         <div *ngIf="form.get('diaNascimento')?.errors?.['diaNascimentoInvalido']">A data de nascimento deve ser
@@ -160,8 +151,7 @@
         <input [type]="mostrarSenha ? 'text' : 'password'" class="form-control"
                             formControlName="senha" id="senha" placeholder="Crie uma senha de 6 números"
                             [class.is-invalid]="form.errors?.['senhaIgualAniversario'] || (form.get('senha')?.invalid && (form.get('senha')?.dirty || form.get('senha')?.touched))"
-                            required>
-                            <span *ngIf="form.get('email')?.invalid" class="text-danger">Email Invalido.</span>
+                            required>                            
                         <span class="input-group-text">
                             <i class="bi" [class.bi-eye-fill]="!mostrarSenha" [class.bi-eye-slash-fill]="mostrarSenha"
                                 (click)="mostrarSenha = !mostrarSenha"></i>
@@ -186,8 +176,7 @@
         <input [type]="mostrarConfirmacaoSenha ? 'text' : 'password'" class="form-control" formControlName="confirmacaoSenha"
             id="confirmacaoSenha" placeholder="Confirme sua senha"
             [class.is-invalid]="form.errors?.['senhaCombina'] && (form.get('confirmacaoSenha')?.dirty || form.get('confirmacaoSenha')?.touched)"
-            required>
-            <span *ngIf="form.get('confirmacaoSenha')?.invalid" class="text-danger">Confirmação Invalido.</span>
+            required>            
         <span class="input-group-text">
             <i class="bi" [class.bi-eye-fill]="!mostrarConfirmacaoSenha" [class.bi-eye-slash-fill]="mostrarConfirmacaoSenha"
                 (click)="mostrarConfirmacaoSenha = !mostrarConfirmacaoSenha"></i>
@@ -198,17 +187,13 @@
         As senhas não coincidem.
     </div>
 </div>
-<div class="group-input">
-    <span *ngIf="form.invalid" class="text-danger">Invalido.</span>
+<div class="group-input">    
     <button type="submit" class="register-button" [disabled]="form.invalid">Continuar</button>
 </div>
 
 <div class="group-input">
     <button type="button" class="return-button" (click)="redirectHome()">Voltar</button>
 </div>
-
-<span *ngIf="form.get('cnpj')?.invalid" class="text-danger">CNPJ Invalido.</span>
-
                 </form>
             </div>
         </div>

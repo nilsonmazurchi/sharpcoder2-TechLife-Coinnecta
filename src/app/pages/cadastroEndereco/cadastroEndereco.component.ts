@@ -39,22 +39,6 @@ export class CadastroEnderecoComponent {
     this.goBack.emit();
   }
 
-  private trimFormValues(formValues: cadastroLoginSenhaTipo): cadastroLoginSenhaTipo {
-    const trimmedValues: any = {};
-
-    (Object.keys(formValues) as Array<keyof cadastroLoginSenhaTipo>).forEach(key => {
-      const value = formValues[key];
-      if (typeof value === 'string') {
-        trimmedValues[key] = value.trim();
-      } else {
-
-        trimmedValues[key] = value;
-      }
-    });
-
-    return trimmedValues as cadastroLoginSenhaTipo;
-  }
-
   onSubmit() {
     if (this.form.valid) {
       const endereco = this.form.value;
