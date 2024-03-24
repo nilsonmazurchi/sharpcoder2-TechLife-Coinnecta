@@ -5,7 +5,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { SobreComponent } from './components/sobre/sobre.component';
 import {SolutionsComponent} from "./components/solutions/solutions.component";
 import { HistoricoComponent } from './pages/historico/historico.component';
-import { AuthGuard} from './auth.guard';
+import {authGuard} from './auth.guard';
 import { CadastroLoginSenhaComponent } from './pages/cadastroLoginSenha/cadastroLoginSenha';
 import { PgcadastroComponent } from './pages/pgcadastro/pgcadastro.component';
 import { PgloginComponent } from './pages/pglogin/pglogin.component';
@@ -20,6 +20,6 @@ export const routes: Routes = [
     (m) => m.PgcadastroComponent
   ),},
   { path: 'solucoes', component: SolutionsComponent },
-  { path: 'historico', component: HistoricoComponent, canActivate: [AuthGuard]  },
+  { path: 'historico', component: HistoricoComponent, canActivate: [authGuard]  },
   { path: 'sobre', component: SobreComponent },
 ]

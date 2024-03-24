@@ -9,6 +9,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { AuthService } from '../../servico/auth.service';
+import {Credencial} from "../../modelos/Credencial";
 interface IPairPasswordNums {
   firstNum: number;
   secondNum: number;
@@ -23,17 +24,25 @@ interface IPairPasswordNums {
   styleUrl: './pglogin.component.css'
 })
 export class PgloginComponent {
+
+  creds: Credencial = {
+    cpf: '',
+    senha: ''
+  }
+
   isCollapsed = true;
-  
-  constructor(private fb: FormBuilder, 
-    private localStorageService: LocalStorageService, 
+
+  constructor(
+    // private fb: FormBuilder,
+    // private localStorageService: LocalStorageService,
     private router: Router,
     private AuthService: AuthService,
-    private formService: FormService) { }
+    private formService: FormService,
+    ) { }
 
 
 
-  form!: FormGroup;
+  // form!: FormGroup;
   errorMessage: string | null = '';
   title = 'testeLogin';
   //A senha correta para o login
@@ -45,17 +54,17 @@ export class PgloginComponent {
   //Uma mascara só para por no input enquanto passwordInsert vai sendo preenchido
   passwordMask: string = '';
   erroMessage: string = '';
-  
 
-  @Output() formCompleted = new EventEmitter<void>();
 
-  private formDataSubscription: Subscription = new Subscription();
-  public formData: any;
+  // @Output() formCompleted = new EventEmitter<void>();
+  //
+  // private formDataSubscription: Subscription = new Subscription();
+  // public formData: any;
 
   // onSubmit() {
   //   if (this.form.valid) {
   //     const formValues: string = this.form.value;
-  //    this.formService.setFormData(formValues)    
+  //    this.formService.setFormData(formValues)
   //     this.form.reset();
   //     this.formCompleted.emit();
   //   }
@@ -63,8 +72,8 @@ export class PgloginComponent {
 
   ngOnInit(): void {
     console.log('ngOnInit chamado');
-    this.initLoginForm();
-    this.showAllUsuarios();
+    // this.initLoginForm();
+    // this.showAllUsuarios();
     this.generateButtons();
 
     // this.formDataSubscription = this.formService.getFormData().subscribe({
@@ -79,41 +88,58 @@ export class PgloginComponent {
     //     console.log('Observable completado');
     //   }
     // });
-    
+
   }
 
-  
 
-  showAllUsuarios(): void {
-    const allUsuarios = this.localStorageService.getAllUsuarios();
-    console.log('Todos os usuários:', allUsuarios);
-  }
 
-  checkUserCPFExistsValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const cpf = control.value;
-      const cpfAsNumber = Number(cpf);
-      if (!cpf) {
-        return null;
-    }
-      const userDoesNotExist = cpf ? !this.localStorageService.checarCPFUsuarioExiste(cpf) : true;
-      if (userDoesNotExist) {
-        return {cpfInvalid: 'DoesNotExist' };
-      }
-      return null;
-    };
-  }
+  // showAllUsuarios(): void {
+  //   const allUsuarios = this.localStorageService.getAllUsuarios();
+  //   console.log('Todos os usuários:', allUsuarios);
+  // }
 
-    private initLoginForm() {
-    this.form = this.fb.group({
-      cpf: new FormControl('', [
-        Validators.required,
-        Validators.minLength(11),
-        Validators.maxLength(11),
-        this.checkUserCPFExistsValidator(),
-        checarCPF()
-      ]),
-    });
+  // checkUserCPFExistsValidator(): ValidatorFn {
+  //   return (control: AbstractControl): ValidationErrors | null => {
+  //     const cpf = control.value;
+  //     const cpfAsNumber = Number(cpf);
+  //     if (!cpf) {
+  //       return null;
+  //   }
+  //     const userDoesNotExist = cpf ? this.localStorageService.checarCPFUsuarioExiste(cpf) : false;
+  //     if (userDoesNotExist) {
+  //       return {cpfInvalid: 'DoesNotExist' };
+  //     }
+  //     return null;
+  //   };
+  // }
+
+  loginForm = new FormGroup({
+    cpf: new FormControl('', [
+            Validators.required,
+          ]),
+    senha: new FormControl('', Validators.required)
+  });
+
+  //   private initLoginForm() {
+  //   this.form = this.fb.group({
+  //     cpf: new FormControl('', [
+  //       Validators.required,
+  //       Validators.minLength(11),
+  //       Validators.maxLength(11),
+  //       this.checkUserCPFExistsValidator(),
+  //       checarCPF()
+  //     ]),
+  //     senha: new FormControl('', Validators.required)
+  //   });
+  // }
+
+  login(){
+    this.AuthService.login(this.loginForm.value as Credencial)
+      .subscribe(response => {
+        this.router.navigate(['historico'])
+      }, () => {
+        console.log("usuario invalido")// this.toast.error('Usuário e/ou senha inválidos');
+      })
   }
 
    //recebe o valor do botao e adiciona em passwordInsert
@@ -138,48 +164,48 @@ export class PgloginComponent {
     this.passwordMask = '';
   }
 
-  
+
   //verifica se a senha está correta
-  isPasswordCorrect() {
-    let isCorrect = true;
-    let cpfDigitado = this.form.get('cpf')?.value;
-    let cnpjDigitado = this.form.get('cnpj')?.value;
-    let correctPassword = "";
-    if(cpfDigitado){
-      correctPassword = this.localStorageService.getSenha(cpfDigitado);
-    } else if (cnpjDigitado){
-      correctPassword = this.localStorageService.getSenhaCNPJ(cnpjDigitado);
-    }
-  
-    for (let i = 0; i < 6; i++) {
-      const pair = this.passwordInsert[i];
-      const passNumPos = parseInt(correctPassword[i]);
-      if (pair && passNumPos !== undefined && (pair.firstNum !== passNumPos && pair.secondNum !== passNumPos)) {
-        isCorrect = false;
-        console.log("Não passei")
-        break;
-      }
-    }
-    if (isCorrect) {
-          let usuarioLogado: { nome: string, cpf?: string, cnpj?:string}
-          if(cpfDigitado){
-            usuarioLogado = { nome: this.localStorageService.getNome(cpfDigitado), cpf: cpfDigitado }
-          } else if(cnpjDigitado){
-            usuarioLogado = { nome: this.localStorageService.getNome(cnpjDigitado), cnpj: cnpjDigitado }
-          } else{
-            throw new Error('CPF ou CNPJ não fornecido')
-          }      
-          this.localStorageService.salvarUsuarioLogadoLocalStorage(usuarioLogado);
-          console.log('Conteúdo do localStorage:', localStorage.getItem('usuariosLogado'));
-          this.AuthService.login();
-          this.router.navigateByUrl('/historico');
-          this.formService.clearFormData();
-      } else {
-      this.erroMessage = 'Senha incorreta!';
-      this.deleteEntirePassword();
-    }
-  }
-  
+  // isPasswordCorrect() {
+  //   let isCorrect = true;
+  //   let cpfDigitado = this.form.get('cpf')?.value;
+  //   let cnpjDigitado = this.form.get('cnpj')?.value;
+  //   let correctPassword = "";
+  //   if(cpfDigitado){
+  //     correctPassword = this.localStorageService.getSenha(cpfDigitado);
+  //   } else if (cnpjDigitado){
+  //     correctPassword = this.localStorageService.getSenhaCNPJ(cnpjDigitado);
+  //   }
+  //
+  //   for (let i = 0; i < 6; i++) {
+  //     const pair = this.passwordInsert[i];
+  //     const passNumPos = parseInt(correctPassword[i]);
+  //     if (pair && passNumPos !== undefined && (pair.firstNum !== passNumPos && pair.secondNum !== passNumPos)) {
+  //       isCorrect = false;
+  //       console.log("Não passei")
+  //       break;
+  //     }
+  //   }
+  //   if (isCorrect) {
+  //         let usuarioLogado: { nome: string, cpf?: string, cnpj?:string}
+  //         if(cpfDigitado){
+  //           usuarioLogado = { nome: this.localStorageService.getNome(cpfDigitado), cpf: cpfDigitado }
+  //         } else if(cnpjDigitado){
+  //           usuarioLogado = { nome: this.localStorageService.getNome(cnpjDigitado), cnpj: cnpjDigitado }
+  //         } else{
+  //           throw new Error('CPF ou CNPJ não fornecido')
+  //         }
+  //         this.localStorageService.salvarUsuarioLogadoLocalStorage(usuarioLogado);
+  //         console.log('Conteúdo do localStorage:', localStorage.getItem('usuariosLogado'));
+  //         this.AuthService.login();
+  //         this.router.navigateByUrl('/historico');
+  //         this.formService.clearFormData();
+  //     } else {
+  //     this.erroMessage = 'Senha incorreta!';
+  //     this.deleteEntirePassword();
+  //   }
+  // }
+
 
   //gera os botões com valores aleatórios sempre
   generateButtons() {
