@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h4 class="modal-title">Depósito</h4>
+    <button type="button" class="btn-close" aria-label="Fechar" (click)="fecharModal()"></button>
+</div>
+<div class="modal-body">
+    <form (submit)="depositar()">
+        <input type="text" ngModel="valorDeposito" name="valorDeposito" placeholder="Valor do depósito" required>
+        <button type="submit" class="btn btn-success">Concluir</button>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="fecharModal()">Cancelar</button>
+</div>

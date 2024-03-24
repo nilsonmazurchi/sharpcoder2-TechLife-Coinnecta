@@ -24,6 +24,9 @@ interface IPairPasswordNums {
   styleUrl: './pglogin.component.css'
 })
 export class PgloginComponent {
+redirectHome() {
+  this.router.navigate(['/home']);
+}
 
   creds: Credencial = {
     cpf: '',

@@ -1,8 +1,16 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 .backgroud-container {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #012B3F;
+    
+    padding-bottom: 55px;
 }
 
 .login-container {
@@ -176,48 +184,4 @@
 .login-button:hover:not(.disabled) {
     background-color: #000ece;
     /* Azul mais escuro */
-}
-
-/* Adicione estilos para os botões de escolha de senha */
-/* Adicione estilos para os botões de escolha de senha */
-.text-criar-conta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    .tecla {
-        /* Ajuste a largura conforme necessário */
-        width: 80px;
-        height: 40px; /* Mantenha a altura conforme necessário */
-        margin: 5px;
-        padding: 10px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
-    }
-
-    .tecla:hover {
-        background-color: #000ece; /* Azul mais escuro */
-    }
-
-    img {
-        width: 20px; /* Ajuste o tamanho conforme necessário */
-        height: 20px; /* Ajuste o tamanho conforme necessário */
-    }
-}
-
-/* Centralize o botão de formulário */
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 20px; /* Adicione margem superior conforme necessário */
 }

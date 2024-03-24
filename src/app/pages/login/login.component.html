@@ -52,14 +52,13 @@
                         <label *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched"
                             class="error-input">Campo obrigatório</label>
                     </div>
-
+                    <br>
                     <!-- Botão de Login -->
                     <div class="group-input">
                         <button type="submit" class="login-button" [ngClass]="{'disabled' : !loginForm.valid}"
                             [disabled]="!loginForm.valid">Login</button>
                     </div>
 
-                    <br><br>
                     <!-- Link para cadastro -->
                     <div class="text-criar-conta">
                         Ainda não possui uma conta? Crie uma agora mesmo!

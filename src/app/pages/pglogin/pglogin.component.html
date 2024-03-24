@@ -36,71 +36,78 @@
                     <!-- Campo de CPF -->
                     <div class="group-input">
                         <div class="text-info">CPF</div>
-<!--                      <input type="cpf" class="form-control" placeholder="cpf teste" formControlName="cpf">-->
+                        <!--                      <input type="cpf" class="form-control" placeholder="cpf teste" formControlName="cpf">-->
                         <input type="text" class="form-control" id="cpf" formControlName="cpf" aria-describedby="cpf"
                             placeholder="13314331232"
                             [class.is-invalid]="loginForm.get('cpf')?.invalid && (loginForm.get('cpf')?.dirty || loginForm.get('cpf')?.touched)"
                             required>
                         <div *ngIf="loginForm.get('cpf')?.invalid && (loginForm.get('cpf')?.dirty || loginForm.get('cpf')?.touched)"
                             class="invalid-feedback">
-                            <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'allDigitsEqual'">Todos os dígitos
+                            <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'allDigitsEqual'">Todos os
+                                dígitos
                                 do
                                 CPF não podem ser iguais.</span>
-                            <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'invalidLength'">O CPF deve conter
+                            <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'invalidLength'">O CPF deve
+                                conter
                                 exatamente 11 dígitos.</span>
                             <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === true">CPF inválido.</span>
-                            <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'DoesNotExist'">O CPF informado não
+                            <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'DoesNotExist'">O CPF
+                                informado não
                                 está cadastrado em nosso sistema. Por favor, verifique e tente novamente.</span>
                         </div>
                     </div>
 
-<!--                  <div class="group-input">-->
-<!--                    <div class="text-info">CPF</div>-->
-<!--                    <input type="text" class="form-control" id="cpf" formControlName="cpf" aria-describedby="cpf"-->
-<!--                           placeholder="13314331232"-->
-<!--                           [class.is-invalid]="loginForm.get('cpf')?.invalid && (loginForm.get('cpf')?.dirty || loginForm.get('cpf')?.touched)"-->
-<!--                           required>-->
-<!--                    <div *ngIf="loginForm.get('cpf')?.invalid && (loginForm.get('cpf')?.dirty || loginForm.get('cpf')?.touched)"-->
-<!--                         class="invalid-feedback">-->
-<!--        <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'allDigitsEqual'">Todos os dígitos-->
-<!--            do CPF não podem ser iguais.</span>-->
-<!--                      <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'invalidLength'">O CPF deve conter-->
-<!--            exatamente 11 dígitos.</span>-->
-<!--                      <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === true">CPF inválido.</span>-->
-<!--                      <span *ngIf="loginForm.get('cpf')?.pending && !loginForm.get('cpf')?.errors?.['cpfInvalid']">Verificando CPF...</span>-->
-<!--                      <span *ngIf="loginForm.get('cpf')?.errors?.['cpfNotExists']">O CPF informado não está cadastrado em nosso sistema. Por favor, verifique e tente novamente.</span>-->
-<!--                      <span *ngIf="loginForm.get('cpf')?.errors?.['cpfCheckFailed']">Erro ao verificar CPF. Por favor, tente novamente mais tarde.</span>-->
-<!--                    </div>-->
-<!--                  </div>-->
+                    <!--                  <div class="group-input">-->
+                    <!--                    <div class="text-info">CPF</div>-->
+                    <!--                    <input type="text" class="form-control" id="cpf" formControlName="cpf" aria-describedby="cpf"-->
+                    <!--                           placeholder="13314331232"-->
+                    <!--                           [class.is-invalid]="loginForm.get('cpf')?.invalid && (loginForm.get('cpf')?.dirty || loginForm.get('cpf')?.touched)"-->
+                    <!--                           required>-->
+                    <!--                    <div *ngIf="loginForm.get('cpf')?.invalid && (loginForm.get('cpf')?.dirty || loginForm.get('cpf')?.touched)"-->
+                    <!--                         class="invalid-feedback">-->
+                    <!--        <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'allDigitsEqual'">Todos os dígitos-->
+                    <!--            do CPF não podem ser iguais.</span>-->
+                    <!--                      <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === 'invalidLength'">O CPF deve conter-->
+                    <!--            exatamente 11 dígitos.</span>-->
+                    <!--                      <span *ngIf="loginForm.get('cpf')?.errors?.['cpfInvalid'] === true">CPF inválido.</span>-->
+                    <!--                      <span *ngIf="loginForm.get('cpf')?.pending && !loginForm.get('cpf')?.errors?.['cpfInvalid']">Verificando CPF...</span>-->
+                    <!--                      <span *ngIf="loginForm.get('cpf')?.errors?.['cpfNotExists']">O CPF informado não está cadastrado em nosso sistema. Por favor, verifique e tente novamente.</span>-->
+                    <!--                      <span *ngIf="loginForm.get('cpf')?.errors?.['cpfCheckFailed']">Erro ao verificar CPF. Por favor, tente novamente mais tarde.</span>-->
+                    <!--                    </div>-->
+                    <!--                  </div>-->
 
 
 
-                  <!-- Campo de Senha -->
-                        <div class="group-input">
-                            <div class="text-info">Senha</div>
-                          <input type="password" class="form-control " placeholder="Digite sua senha" formControlName="senha">
-<!--                            <input class="form-control" placeholder="Digite sua senha" [value]="passwordMask"-->
-<!--                                type="password" maxlength="6" formControlName="senha">-->
-<!--                            <p *ngIf="erroMessage" class="error-message">{{ erroMessage }}</p>-->
-<!--                            <div class="text-criar-conta">-->
-<!--                                @for (pairPass of pairPasswordNums; track $index) {-->
-<!--                                <button class="tecla col" (click)="addToPassword(pairPass)">{{pairPass.firstNum}} ou-->
-<!--                                    {{pairPass.secondNum}}</button>-->
-<!--                                }-->
-<!--                                <button class="tecla col" (click)="deletePassword()"><img-->
-<!--                                        src="../../../assets/image/Backspace.png" alt="Descrição da imagem">-->
-<!--                                </button>-->
-<!--                            </div>-->
-                            <div>
-                                <button class="btn btn-primary w-100 py-2">Login</button>
-<!--                              <button class="btn btn-dark  w-100 py-2">teste</button>-->
-                            </div>
+                    <!-- Campo de Senha -->
+                    <div class="group-input">
+                        <div class="text-info">Senha</div>
+                        <input type="password" class="form-control " placeholder="Digite sua senha"
+                            formControlName="senha">
+                        <!--                            <input class="form-control" placeholder="Digite sua senha" [value]="passwordMask"-->
+                        <!--                                type="password" maxlength="6" formControlName="senha">-->
+                        <!--                            <p *ngIf="erroMessage" class="error-message">{{ erroMessage }}</p>-->
+                        <!--                            <div class="text-criar-conta">-->
+                        <!--                                @for (pairPass of pairPasswordNums; track $index) {-->
+                        <!--                                <button class="tecla col" (click)="addToPassword(pairPass)">{{pairPass.firstNum}} ou-->
+                        <!--                                    {{pairPass.secondNum}}</button>-->
+                        <!--                                }-->
+                        <!--                                <button class="tecla col" (click)="deletePassword()"><img-->
+                        <!--                                        src="../../../assets/image/Backspace.png" alt="Descrição da imagem">-->
+                        <!--                                </button>-->
+                        <!--                            </div>-->
+                        <br>
+                        <div>
+                            <button class="btn btn-primary w-100 py-2">Login</button>
+                            <!--                              <button class="btn btn-dark  w-100 py-2">teste</button>-->
                         </div>
+                        <div>
+                            <button class="criarconta-button" (click)="redirectHome()">Voltar</button>
+                        </div>
+                    </div>
 
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 <app-footer></app-footer>

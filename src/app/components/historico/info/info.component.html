@@ -1,18 +1,18 @@
 <article class="container-lg  mx-auto my-5   p-4    row ">
   <div class=" container-md col d-flex  text-center flex-column justify-content-center">
-    <p class="ms-0 mb-0">Bem vindo</p>
-    <p class="ms-0 mb-0 usuario" >{{user.nome}}!</p>
+    <p class="ms-0 mb-0 h5">Bem vindo</p>
+    <p class="ms-0 mb-0 usuario">{{userName}}!</p>
   </div>
   <div class=" container-md col text-center   ">
-    <p class="ms-0   h5" > Saldo em conta</p>
-    <button class="btn btn-warning m-0 exibir" *ngIf="!exibirConteudo" (click)="botaoConteudo()">Exibir Saldo </button>
-    <p  (click)="botaoConteudo()" *ngIf="exibirConteudo"> <span id="saldo" class="h1 badge m-0 text-warning "> R$ 2.000,00</span> </p>
+    <!-- <p class="ms-0   h5" > Saldo em conta</p> -->
+    <button class="btn btn-warning m-0 exibir" *ngIf="!exibirConteudo" (click)="botaoConteudo()">Criar Conta
+      Corrente</button>
+    <div *ngIf="exibirConteudo">
+      <h5>Você está na sua Conta Corrente!</h5>
+      <br>
+      <p class="ms-0 h5 saldo">
+        Saldo:<span id="saldo" class="h1 badge m-0 text-warning">R${{saldoConta}}</span>
+      </p>
+    </div>
   </div>
 </article>
-
-
-
-
-
-
-
