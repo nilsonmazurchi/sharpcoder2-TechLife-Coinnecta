@@ -25,7 +25,7 @@ export class LoginComponent {
     private AuthService: AuthService
   ) { }
   loginForm!: FormGroup;
-  
+
   loginObj: LoginModel  = new LoginModel();
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class LoginComponent {
         alert('Login realizado com sucesso!');
         this.DadosService.setNome(isUserPresent.nome);
         this.DadosService.setSobrenome(isUserPresent.sobrenome);
-        this.AuthService.login();
+        // this.AuthService.login();
         this.router.navigateByUrl('/historico');
       } else {
         alert('Usuário ou senha inválidos')
@@ -70,14 +70,14 @@ export class LoginComponent {
   }
   }
 
-export class LoginModel  { 
+export class LoginModel  {
   email: string;
   senha: string;
   nome: string;
   sobrenome: string
 
   constructor() {
-    this.email = ""; 
+    this.email = "";
     this.senha = "";
     this.nome = "";
     this.sobrenome = ""
