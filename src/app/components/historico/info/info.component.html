@@ -5,7 +5,7 @@
   </div>
   <div class=" container-md col text-center   ">
     <!-- <p class="ms-0   h5" > Saldo em conta</p> -->
-    <button class="btn btn-warning m-0 exibir" *ngIf="!exibirConteudo" (click)="botaoConteudo()">Criar Conta
+    <button class="btn btn-warning m-0 exibir" *ngIf="!hasAccount" (click)="botaoConteudo()">Criar Conta
       Corrente</button>
     <div *ngIf="exibirConteudo">
       <h5>Você está na sua Conta Corrente!</h5>

@@ -4,9 +4,11 @@
 </div>
 <div class="modal-body">
     <form (submit)="transferir()">
-        <input type="text" ngModel="valorTransferencia" name="valorTransferencia"
-            placeholder="Valor da transferência" required>
-        <input type="text" ngModel="contaDestino" name="contaDestino" placeholder="Conta de destino" required>
+        <label for="valorDeposito">Valor</label>
+        <input type="text" [(ngModel)]="valorTransferencia" name="valorTransferencia"
+            required><br>
+        <label for="contaDestino">Id da Conta Destino</label>
+        <input type="text" [(ngModel)]="contaDestinoId" name="contaDestinoId" required>
         <button type="submit" class="btn btn-success">Concluir</button>
     </form>
 </div>

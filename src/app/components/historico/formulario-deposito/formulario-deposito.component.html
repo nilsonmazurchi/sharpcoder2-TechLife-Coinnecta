@@ -4,7 +4,8 @@
 </div>
 <div class="modal-body">
     <form (submit)="depositar()">
-        <input type="text" ngModel="valorDeposito" name="valorDeposito" placeholder="Valor do depósito" required>
+        <label for="valorDeposito">Valor do Depósito</label>
+        <input type="text" [(ngModel)]="valorDeposito" name="valorDeposito" placeholder="Valor do depósito" required>
         <button type="submit" class="btn btn-success">Concluir</button>
     </form>
 </div>
