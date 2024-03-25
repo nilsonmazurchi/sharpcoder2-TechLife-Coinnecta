@@ -18,6 +18,7 @@ export class HistoricoNavComponent {
 
   deslogar(){
     this.AuthService.logout();
+    localStorage.clear();
   }
 
 }

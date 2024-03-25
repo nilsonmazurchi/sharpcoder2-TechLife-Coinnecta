@@ -52,17 +52,25 @@ export class BancoDeDadosService {
     return this.http.post<any>(`${this.baseUrl}/contas/${usuarioId}`, dadosConta);
   }
   getSaldo(contaId: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/contas/${contaId}`)
+    return this.http.get<any>(`${this.baseUrl}/contas/${contaId}/saldo`)
   }
 
   //Transacao
-  depositar(valor: number) {
-    return this.http.post<any>(`${this.baseUrl}/transacoes/deposito`, valor);
+  depositar(depositoDto: number) {
+    return this.http.post<any>(`${this.baseUrl}/transacoes/deposito`, depositoDto);
   }
   sacar(valor: number) {
     return this.http.post<any>(`${this.baseUrl}/transacoes/saque`, valor);
   }
   tranferir(valor: number) {
     return this.http.post<any>(`${this.baseUrl}/transacoes/transferecia`, valor);
+  }
+
+  getTransacoesPorContaId(contaId: number): Observable<any> {
+    return this.http.get<any[]>(`${this.baseUrl}/transacoes/conta/${contaId}`);
+  }
+
+  getContaPorUsuarioId(usuarioId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/contas/usuario/${usuarioId}`);
   }
 }

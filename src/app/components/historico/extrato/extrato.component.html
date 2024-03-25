@@ -9,7 +9,7 @@
     <div class="container">
       <h2><strong>Meu Histórico</strong></h2>
       <form action="/search" method="get" class="search-form">
-        <input type="search" id="search" name="q" placeholder="Pesquisar...">
+        <!-- <input type="search" id="search" name="q" placeholder="Pesquisar..."> -->
       </form>
   
       <br>
@@ -17,43 +17,18 @@
       <table>
         <thead>
           <tr>
-            <th>Data</th>
-            <th>Descrição</th>
+            <th>Data</th>           
             <th>Valor (R$)</th>
             <th>Tipo</th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr>
-            <td>2024-03-21</td>
-            <td>Depósito em dinheiro</td>
-            <td>500.00</td>
-            <td>Crédito</td>
-          </tr>
-          <tr>
-            <td>2024-03-22</td>
-            <td>Compra no mercado</td>
-            <td>-50.00</td>
-            <td>Débito</td>
-          </tr>
-          <tr>
-            <td>2024-03-22</td>
-            <td>Compra no mercado</td>
-            <td>-50.00</td>
-            <td>Débito</td>
-          </tr>
-          <tr>
-            <td>2024-03-22</td>
-            <td>Compra no mercado</td>
-            <td>-50.00</td>
-            <td>Débito</td>
-          </tr>
-          <tr>
-            <td>2024-03-22</td>
-            <td>Compra no mercado</td>
-            <td>-50.00</td>
-            <td>Débito</td>
-          </tr> -->
+         <!-- Iteração sobre as transações -->
+        <tr *ngFor="let transacao of transacoes">
+          <td>{{ transacao.dataHoraTrasacao }}</td> <!-- Supondo que o campo de data seja 'data' -->
+          <td>{{ transacao.valor }}</td> <!-- Supondo que o campo de valor seja 'valor' -->
+          <td>{{ transacao.tipoTransacao }}</td> <!-- Supondo que o campo de tipo seja 'tipo' -->
+        </tr>
         </tbody>
       </table>
     </div>
